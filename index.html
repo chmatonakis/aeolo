@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aeolo — generate Windows .bat or macOS .sh scripts to open your URLs, folders, and apps in one click. Private, client-side.">
+    <title>Aeolo - The 1-Click Workspace Launcher</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-600 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div id="nav-logo" class="flex items-center space-x-3 group cursor-pointer">
+                <svg class="w-12 h-12 text-indigo-600 group-hover:rotate-12 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.6 4.6A2 2 0 1 1 11 8H2" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12.6 19.4A2 2 0 1 0 14 16H2" />
+                </svg>
+                <div class="flex flex-col -space-y-1">
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase">Aeol<span class="text-indigo-600">o</span></span>
+                    <span class="text-[9px] font-black text-slate-400 tracking-[0.3em] uppercase">By Charalampos Matonakis</span>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <button id="view-generator" class="text-xs font-black uppercase tracking-widest text-indigo-600 border-b-2 border-indigo-600 pb-1 transition-all">Generator</button>
+                <button id="view-story" class="text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent">Our Story</button>
+                <button id="view-guide" class="text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent">Guide & Safety</button>
+            </div>
+
+            <div class="flex items-center space-x-4 sm:space-x-8">
+                <a href="https://github.com/cmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-900 transition-colors" title="Source code on GitHub">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="#" class="flex items-center px-6 py-2.5 bg-amber-50 text-amber-700 rounded-2xl border border-amber-100 hover:bg-amber-100 transition-all text-xs font-black uppercase tracking-widest group">
+                    <span class="mr-2 group-hover:rotate-12 transition-transform text-lg">☕</span> Support
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="main-content">
+
+        <!-- GENERATOR VIEW -->
+        <main id="generator-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24">
+            <div class="mb-20 text-center lg:text-left">
+                <h1 class="text-[3.1875rem] lg:text-[5.1rem] font-black text-slate-900 tracking-tight leading-[0.85] max-w-4xl mb-10 italic uppercase">
+                    Release your workday <br/><span class="text-indigo-600">in one breath.</span>
+                </h1>
+                <p class="text-2xl text-slate-400 max-w-2xl font-medium leading-relaxed">
+                    Automate your workspace startup with <b>immediate</b>, one-click launches. Aeolo builds high-performance scripts to <b>release</b> your tabs, folders, and apps in an instant—<b>private</b> and <b>secure</b> by design: everything runs in your browser, nothing is uploaded, and your routine stays on your machine.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+
+                <!-- Left Panel -->
+                <div class="lg:col-span-7 space-y-12">
+
+                    <!-- Engine Configuration -->
+                    <div class="bg-white rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 p-12">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mb-12">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-6 bg-indigo-600 rounded-full"></div>
+                                <h2 class="text-xs font-black text-slate-900 uppercase tracking-[0.4em]">Engine Configuration</h2>
+                            </div>
+                            <div class="flex bg-slate-100 p-1.5 rounded-2xl border border-slate-200 shadow-inner">
+                                <button id="os-windows" class="px-8 py-3 text-[10px] font-black rounded-xl transition-all bg-white shadow-sm text-slate-900 uppercase tracking-widest">Windows (.bat)</button>
+                                <button id="os-mac" class="px-8 py-3 text-[10px] font-black rounded-xl transition-all text-slate-400 hover:text-slate-600 uppercase tracking-widest">macOS (.sh)</button>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <div class="md:col-span-5">
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Export Filename</label>
+                                <div class="flex items-center">
+                                    <input type="text" id="filename-input" value="morning_routine" class="w-full bg-slate-50 border border-slate-200 border-r-0 rounded-l-2xl px-6 py-5 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-black text-slate-900">
+                                    <span id="file-extension-display" class="bg-slate-100 border border-slate-200 border-l-0 rounded-r-2xl px-5 py-5 text-slate-400 font-black text-[10px]">.bat</span>
+                                </div>
+                            </div>
+                            <div class="md:col-span-4">
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Target Browser</label>
+                                <div class="relative group">
+                                    <select id="browser-select" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold text-slate-900 appearance-none cursor-pointer">
+                                        <option value="default">Default</option>
+                                        <option value="msedge" selected>Edge</option>
+                                        <option value="chrome">Chrome</option>
+                                        <option value="firefox">Firefox</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-slate-400">
+                                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:col-span-3">
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Delay</label>
+                                <div class="relative flex items-center">
+                                    <input type="number" id="delay-input" min="0" max="10" value="2" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-black text-slate-900">
+                                    <span class="absolute right-5 text-[10px] font-black text-slate-300 uppercase pointer-events-none">SEC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Release Stack -->
+                    <div class="bg-white rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 p-12">
+                        <div class="flex items-center justify-between mb-12">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-6 bg-indigo-600 rounded-full"></div>
+                                <h2 class="text-xs font-black text-slate-900 uppercase tracking-[0.4em]">Release Stack</h2>
+                            </div>
+                        </div>
+
+                        <div id="items-list" class="space-y-6"></div>
+
+                        <div class="flex flex-wrap gap-4 pt-12 mt-12 border-t border-slate-50">
+                            <button data-add="url" class="border-2 border-slate-100 text-slate-600 hover:text-indigo-600 hover:border-indigo-100 hover:bg-indigo-50/50 font-black py-5 px-10 rounded-[2rem] transition-all flex items-center text-[10px] tracking-widest uppercase group">
+                                <svg class="w-5 h-5 mr-3 text-indigo-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+                                Add URL
+                            </button>
+                            <button data-add="folder" class="border-2 border-slate-100 text-slate-600 hover:text-amber-600 hover:border-amber-100 hover:bg-amber-50/50 font-black py-5 px-10 rounded-[2rem] transition-all flex items-center text-[10px] tracking-widest uppercase group">
+                                <svg class="w-5 h-5 mr-3 text-amber-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" /></svg>
+                                Add Folder
+                            </button>
+                            <button data-add="app" class="border-2 border-slate-100 text-slate-600 hover:text-emerald-600 hover:border-emerald-100 hover:bg-emerald-50/50 font-black py-5 px-10 rounded-[2rem] transition-all flex items-center text-[10px] tracking-widest uppercase group">
+                                <svg class="w-5 h-5 mr-3 text-emerald-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 19.5 3h-15a2.25 2.25 0 0 0-2.25 2.25v9.75" /></svg>
+                                Add App
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Preview Panel -->
+                <div class="lg:col-span-5">
+                    <div class="sticky top-28 bg-slate-900 rounded-[4rem] shadow-2xl p-12 relative overflow-hidden flex flex-col h-auto min-h-[720px] glow-indigo border border-slate-800">
+
+                        <div class="absolute -top-20 -right-20 w-80 h-80 bg-indigo-500/10 blur-[100px] pointer-events-none"></div>
+                        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-emerald-500/5 blur-[100px] pointer-events-none"></div>
+
+                        <div class="relative z-10 flex items-center justify-between mb-10 border-b border-slate-800 pb-8">
+                            <div class="flex items-center space-x-3 text-white">
+                                <div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.6)] animate-pulse"></div>
+                                <h2 class="text-[11px] font-black uppercase tracking-[0.5em] opacity-60 italic">Aeolo Engine</h2>
+                            </div>
+                            <span id="preview-badge" class="px-5 py-2 bg-slate-800 text-indigo-400 font-mono text-[10px] rounded-2xl font-black tracking-widest uppercase">.bat</span>
+                        </div>
+
+                        <div class="relative z-10 flex-1 bg-black/40 rounded-[2.5rem] p-8 overflow-x-auto border border-white/5 mb-10 custom-scrollbar shadow-inner">
+                            <pre><code id="code-preview" class="text-[12px] font-mono text-emerald-400 leading-relaxed whitespace-pre"></code></pre>
+                        </div>
+
+                        <button id="download-btn" class="relative z-10 w-full bg-indigo-600 hover:bg-indigo-500 text-white font-black py-8 rounded-[1.5rem] shadow-xl shadow-indigo-900/40 hover:scale-[1.01] active:scale-100 transition-all flex items-center justify-center text-xl uppercase tracking-[0.2em] group">
+                            <svg class="w-7 h-7 mr-4 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                            Release Script
+                        </button>
+
+                        <p id="mac-note" class="relative z-10 mt-8 text-[10px] text-slate-500 text-center hidden italic font-medium leading-relaxed">
+                            To run on macOS, execute <code class="bg-slate-800 px-2 py-0.5 rounded text-indigo-300">chmod +x</code> on the script in your Terminal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- STORY VIEW -->
+        <section id="story-container" class="hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24">
+            <div class="bg-white rounded-[4rem] shadow-2xl border border-slate-100 overflow-hidden">
+                <div class="h-80 story-gradient flex items-center justify-center relative">
+                    <svg class="w-48 h-48 text-indigo-600 opacity-10 absolute -right-10 -top-10 rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" /><path d="M9.6 4.6A2 2 0 1 1 11 8H2" /><path d="M12.6 19.4A2 2 0 1 0 14 16H2" /></svg>
+                    <div class="text-center relative z-10 px-6">
+                        <h2 class="text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-widest italic leading-tight">The Story Behind Aeolo</h2>
+                        <p class="text-indigo-600 font-bold mt-4 uppercase tracking-[0.4em] text-base">By Charalampos Matonakis</p>
+                    </div>
+                </div>
+                <div class="p-12 lg:p-20 space-y-16 text-xl lg:text-2xl leading-relaxed text-slate-600">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                        <div class="space-y-6">
+                            <h3 class="text-sm font-black text-indigo-600 uppercase tracking-[0.4em]">The Professional</h3>
+                            <p class="font-bold text-slate-900 leading-snug">My name is <span class="text-indigo-600">Charalampos Matonakis</span>. I live in Crete, Greece, and I am an Economist.</p>
+                            <p>I specialize in <b>insurance and public pensions</b>. Managing complex data and professional workflows is my daily reality.</p>
+                            <p>I've always had a passion for technology, teaching myself the basics of coding and web development. This curiosity led me to build a <b>successful niche SaaS</b> for the pension industry on my own.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <h3 class="text-sm font-black text-indigo-600 uppercase tracking-[0.4em]">The Spark</h3>
+                            <p>The idea for <b>Aeolo</b> was born out of a repetitive monthly frustration. Every month, I had to prepare invoices for my accountant.</p>
+                            <p>The routine was always the same: opening banking tabs, document folders, and invoicing apps. I was losing 10 minutes just setting up my environment.</p>
+                            <p>I wanted a way to trigger everything with <b>one single click</b>. No searching, no waiting—just immediate readiness.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-indigo-600 p-10 lg:p-14 rounded-[3rem] shadow-xl text-white flex flex-col lg:flex-row items-start gap-10 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+                        <div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center shrink-0 border border-white/30 relative z-10">
+                            <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
+                                <path d="M9.6 4.6A2 2 0 1 1 11 8H2" />
+                                <path d="M12.6 19.4A2 2 0 1 0 14 16H2" />
+                            </svg>
+                        </div>
+                        <div class="space-y-6 relative z-10 text-xl lg:text-2xl leading-relaxed">
+                            <h3 class="text-sm font-black uppercase tracking-[0.5em] text-indigo-200">Why the name Aeolo — and Aeolus in mythology</h3>
+                            <p class="text-white font-medium italic">
+                                The name <b>Aeolo</b> echoes <b>Aeolus</b> (Greek: <span lang="el">Αίολος</span>) — in mythology, the divine <b>keeper of the winds</b>. He had sealed <b>every wind</b> into one leather sack so they could be meted out <b>one at a time</b>, in calm measure, whenever the voyage needed a breath of power.
+                            </p>
+                            <p class="text-indigo-100">
+                                In Homer’s <i>Odyssey</i>, Odysseus’s companions broke that design. Thinking the sack held treasure, they tore it open while he slept—and in one catastrophic instant, <b>the full pack of winds rushed out together</b>: not a single breeze, but <b>all of them at once</b>, a wall of air that ripped the ship from its course and flung the crew back into the open sea. The horror of the scene is precisely that <b>total, simultaneous release</b>—beautiful in theory as “everything at once,” ruinous when it happens <b>by mistake</b>, without the keeper’s intent.
+                            </p>
+                            <p class="text-indigo-100 not-italic">
+                                <b>Aeolo</b> does something structurally similar: when you run your script, <b>everything you stacked opens together</b>—tabs, folders, apps—in one sweep, like <b>all the winds leaving the bag at once</b>. The difference is the hinge: <b>not by accident</b>, not while you sleep, not because someone guessed wrong. <i>You</i> choose the moment; the “storm” is <b>on purpose</b>. Same metaphor as the hero line: your workday, <b>in one breath</b>—only when <i>you</i> say the word.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GUIDE & SAFETY VIEW -->
+        <section id="guide-container" class="hidden max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+                <!-- Main Guide -->
+                <div class="lg:col-span-8 space-y-12">
+                    <div class="bg-white rounded-[4rem] shadow-2xl p-12 lg:p-20 border border-slate-100">
+                        <h2 class="text-4xl font-black text-slate-900 uppercase tracking-widest italic mb-12">Guide & Troubleshooting</h2>
+
+                        <div class="space-y-16">
+                            <section class="space-y-6">
+                                <h3 class="flex items-center text-xs font-black text-indigo-600 uppercase tracking-[0.4em]">
+                                    <span class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center mr-3 text-indigo-600">01</span>
+                                    How to use Aeolo
+                                </h3>
+                                <ul class="space-y-4 text-slate-600">
+                                    <li class="flex items-start"><span class="mr-3 font-bold text-indigo-400">•</span> Add your frequently used URLs, local folder paths, or application executables to the stack.</li>
+                                    <li class="flex items-start"><span class="mr-3 font-bold text-indigo-400">•</span> Choose your Operating System (Windows or macOS).</li>
+                                    <li class="flex items-start"><span class="mr-3 font-bold text-indigo-400">•</span> Click "Release Script" and save the file to your Desktop.</li>
+                                    <li class="flex items-start"><span class="mr-3 font-bold text-indigo-400">•</span> Double-click the file whenever you start your day!</li>
+                                </ul>
+                            </section>
+
+                            <section id="win-fix" class="space-y-6 p-10 bg-slate-50 rounded-[3rem] border border-slate-100">
+                                <h3 class="flex items-center text-xs font-black text-amber-600 uppercase tracking-[0.4em]">
+                                    <span class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center mr-3 text-amber-600">02</span>
+                                    Fix Windows Blocking
+                                </h3>
+                                <p class="text-sm leading-relaxed">Windows might block scripts downloaded from the internet for security. If your script doesn't run:</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+                                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                                        <p class="font-bold text-slate-900 mb-2">Step 1</p>
+                                        <p class="text-xs text-slate-500">Right-click your .bat file and select <b>Properties</b>.</p>
+                                    </div>
+                                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                                        <p class="font-bold text-slate-900 mb-2">Step 2</p>
+                                        <p class="text-xs text-slate-500">In the General tab, check the <b>"Unblock"</b> box at the bottom and click Apply.</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety Sidebar -->
+                <div class="lg:col-span-4 space-y-8">
+                    <div class="bg-indigo-600 text-white rounded-[3rem] shadow-xl p-10 space-y-8 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] opacity-80">Safety & Privacy</h3>
+
+                        <div class="space-y-6">
+                            <div>
+                                <p class="font-black uppercase tracking-widest text-[10px] text-indigo-200 mb-2">100% Client-Side</p>
+                                <p class="text-sm leading-relaxed opacity-90 text-indigo-50">Aeolo runs entirely in your browser. Your URLs, paths, and app names <b>never</b> leave your computer. No servers, no tracking, no database.</p>
+                            </div>
+                            <div>
+                                <p class="font-black uppercase tracking-widest text-[10px] text-indigo-200 mb-2">Audit the Code</p>
+                                <p class="text-sm leading-relaxed opacity-90 text-indigo-50">Transparency is our priority. You can check the complete source code of this application on GitHub to verify its safety.</p>
+                                <a href="https://github.com/cmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-4 text-xs font-black uppercase tracking-widest bg-white/20 px-4 py-2 rounded-xl hover:bg-white/30 transition-all border border-white/20">Check GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-[3rem] shadow-lg p-10 border border-slate-100">
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-slate-400 mb-6">macOS Users</h3>
+                        <p class="text-xs leading-relaxed text-slate-500">After downloading the <b>.sh</b> file, you must give it execution permissions. Open Terminal and type:<br><code class="block mt-3 p-3 bg-slate-50 rounded-lg text-indigo-600 font-mono">chmod +x your_script.sh</code></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-24 pt-24 border-t border-slate-200 text-center pb-32 italic">
+            <p class="text-[11px] font-black text-slate-400 uppercase tracking-[0.7em] mb-16">Aeolo.app • Designed in Crete • Built for Professionals</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-12">
+                <a href="#" target="_blank" class="group inline-flex items-center px-12 py-6 bg-white border border-slate-200 rounded-[2rem] text-[11px] font-black text-slate-700 hover:shadow-2xl transition-all uppercase tracking-[0.3em] hover:-translate-y-1">
+                    <span class="mr-4 group-hover:rotate-12 transition-transform duration-300 text-2xl">☕</span> Buy me a coffee
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
