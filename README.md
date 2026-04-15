@@ -19,19 +19,18 @@ Open `index.html` in a modern browser. The app loads [Tailwind CSS](https://tail
 
 ## Publish this repo on GitHub
 
-If the repository does not exist yet:
+The project already has a local Git repository (`main` branch, initial commit). The remote **https://github.com/cmatonakis/aeolo** must exist on GitHub (create it if you see 404).
 
-1. On GitHub: **New repository** → owner `cmatonakis`, name `aeolo`, **Public** → create **without** README (this project already has one).
-2. In this folder (PowerShell):
+1. On GitHub: **New repository** → owner `cmatonakis`, name `aeolo`, **Public** → create **without** README, `.gitignore`, or license (this repo already includes them).
+2. In this folder (PowerShell), link and push:
 
 ```powershell
-git init
-git add index.html css/ js/ README.md .gitignore
-git commit -m "Initial commit: Aeolo workspace launcher"
-git branch -M main
+cd "c:\Users\chmat\Dropbox\ΕΡΓΑΛΕΙΑ\AEOLO"
 git remote add origin https://github.com/cmatonakis/aeolo.git
 git push -u origin main
 ```
+
+If `origin` already exists, use `git remote set-url origin https://github.com/cmatonakis/aeolo.git` instead.
 
 3. Optional — **GitHub Pages:** Repository → **Settings** → **Pages** → Source: **Deploy from a branch** → branch `main`, folder `/ (root)`.
 
