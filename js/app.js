@@ -5,7 +5,7 @@
         let currentOS = 'windows';
         let items = [
             { id: 1, type: 'url', value: 'https://mail.google.com' },
-            { id: 2, type: 'url', value: 'https://github.com/cmatonakis/aeolo' }
+            { id: 2, type: 'url', value: 'https://github.com/chmatonakis/aeolo' }
         ];
 
         const dom = {
@@ -17,9 +17,16 @@
             extDisp: document.getElementById('file-extension-display'),
             badge: document.getElementById('preview-badge'),
             macNote: document.getElementById('mac-note'),
+            winTroubleshoot: document.getElementById('win-troubleshoot'),
+            previewOpenGuide: document.getElementById('preview-open-guide'),
             list: document.getElementById('items-list'),
             preview: document.getElementById('code-preview'),
             dl: document.getElementById('download-btn'),
+            copyBtn: document.getElementById('copy-code-btn'),
+            copyLabel: document.getElementById('copy-code-label'),
+            copyFeedback: document.getElementById('copy-feedback'),
+            pasteExtHint: document.getElementById('paste-ext-hint'),
+            pasteMacExtra: document.getElementById('paste-mac-extra'),
             addBtns: document.querySelectorAll('[data-add]'),
             viewGenBtn: document.getElementById('view-generator'),
             viewStoryBtn: document.getElementById('view-story'),
@@ -65,6 +72,7 @@
         dom.viewStoryBtn.addEventListener('click', () => toggleView('story'));
         dom.viewGuideBtn.addEventListener('click', () => toggleView('guide'));
         dom.logo.addEventListener('click', () => toggleView('generator'));
+        dom.previewOpenGuide.addEventListener('click', () => toggleView('guide'));
 
         function setPlatform(os) {
             currentOS = os;
@@ -76,6 +84,9 @@
             dom.extDisp.innerText = isWin ? '.bat' : '.sh';
             dom.badge.innerText = isWin ? '.bat' : '.sh';
             dom.macNote.classList.toggle('hidden', isWin);
+            dom.winTroubleshoot.classList.toggle('hidden', !isWin);
+            dom.pasteExtHint.textContent = isWin ? '.bat' : '.sh';
+            dom.pasteMacExtra.classList.toggle('hidden', isWin);
             dom.browser.disabled = !isWin;
             dom.browser.parentElement.style.opacity = isWin ? '1' : '0.35';
 
@@ -196,6 +207,49 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+        });
+
+        function copyTextFallback(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand('copy');
+            } finally {
+                document.body.removeChild(ta);
+            }
+        }
+
+        let copyResetTimer;
+        dom.copyBtn.addEventListener('click', async () => {
+            const text = generateCode();
+            const labelDefault = 'Copy code';
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    copyTextFallback(text);
+                }
+                dom.copyLabel.textContent = 'Copied!';
+                dom.copyFeedback.textContent = 'Script copied to clipboard.';
+                clearTimeout(copyResetTimer);
+                copyResetTimer = setTimeout(() => {
+                    dom.copyLabel.textContent = labelDefault;
+                    dom.copyFeedback.textContent = '';
+                }, 2200);
+            } catch {
+                dom.copyLabel.textContent = 'Copy failed';
+                dom.copyFeedback.textContent = 'Could not copy; try selecting the preview text manually.';
+                clearTimeout(copyResetTimer);
+                copyResetTimer = setTimeout(() => {
+                    dom.copyLabel.textContent = labelDefault;
+                    dom.copyFeedback.textContent = '';
+                }, 3500);
+            }
         });
 
         renderItems();
