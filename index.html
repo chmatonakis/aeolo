@@ -13,26 +13,40 @@
 
     <!-- Navbar -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg shadow-sm border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div id="nav-logo" class="flex items-center space-x-3 group cursor-pointer">
-                <svg class="w-12 h-12 text-indigo-600 group-hover:rotate-12 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.6 4.6A2 2 0 1 1 11 8H2" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12.6 19.4A2 2 0 1 0 14 16H2" />
-                </svg>
-                <div class="flex flex-col -space-y-1">
-                    <span class="text-2xl font-black text-slate-900 tracking-tighter uppercase">Aeol<span class="text-indigo-600">o</span></span>
-                    <span class="text-[9px] font-black text-slate-400 tracking-[0.3em] uppercase">By Charalampos Matonakis</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-0 md:h-20 flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
+            <!-- Mobile: logo + actions | Desktop: logo only (actions on right) -->
+            <div class="flex items-center justify-between gap-3 shrink-0 w-full md:w-auto md:max-w-[min(100%,18rem)]">
+                <div id="nav-logo" class="flex items-center space-x-3 group cursor-pointer min-w-0">
+                    <svg class="w-10 h-10 md:w-12 md:h-12 shrink-0 text-indigo-600 group-hover:rotate-12 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.6 4.6A2 2 0 1 1 11 8H2" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12.6 19.4A2 2 0 1 0 14 16H2" />
+                    </svg>
+                    <div class="flex flex-col -space-y-1 min-w-0">
+                        <span class="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase truncate">Aeol<span class="text-indigo-600">o</span></span>
+                        <span class="text-[8px] md:text-[9px] font-black text-slate-400 tracking-[0.2em] md:tracking-[0.3em] uppercase truncate">By Charalampos Matonakis</span>
+                    </div>
+                </div>
+                <div class="flex md:hidden items-center space-x-3 shrink-0">
+                    <a href="https://github.com/chmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-900 transition-colors p-1" title="Source code on GitHub" aria-label="GitHub">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.paypal.com/donate/?business=88D4CMKP56FM6&amp;no_recurring=0&amp;currency_code=EUR" target="_blank" rel="noopener noreferrer" title="Support on PayPal" class="flex items-center px-4 py-2 bg-amber-50 text-amber-700 rounded-xl border border-amber-100 hover:bg-amber-100 transition-all text-[10px] font-black uppercase tracking-widest">
+                        <span class="mr-1.5 text-base" aria-hidden="true">☕</span> Support
+                    </a>
                 </div>
             </div>
 
-            <div class="hidden md:flex items-center space-x-8">
-                <button id="view-generator" class="text-xs font-black uppercase tracking-widest text-indigo-600 border-b-2 border-indigo-600 pb-1 transition-all">Generator</button>
-                <button id="view-story" class="text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent">Our Story</button>
-                <button id="view-guide" class="text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent">Guide & Safety</button>
+            <!-- Primary nav: wraps on small screens; centered on md+ -->
+            <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 sm:gap-x-4 md:gap-5 lg:gap-6 w-full md:flex-1 md:min-w-0 border-t border-slate-100/90 pt-2 md:border-t-0 md:pt-0">
+                <button type="button" id="view-generator" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-indigo-600 border-b-2 border-indigo-600 pb-1 transition-all whitespace-nowrap">Generator</button>
+                <button type="button" id="view-why" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap">Why Aeolo?</button>
+                <button type="button" id="view-usecases" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap">Use Cases</button>
+                <button type="button" id="view-story" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap">Our Story</button>
+                <button type="button" id="view-guide" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap">Guide &amp; Safety</button>
             </div>
 
-            <div class="flex items-center space-x-4 sm:space-x-8">
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-8 shrink-0">
                 <a href="https://github.com/chmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-900 transition-colors" title="Source code on GitHub">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 </a>
@@ -259,6 +273,153 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- WHY AEOLO VIEW -->
+        <section id="why-container" class="hidden max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20">
+            <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+                <p class="text-[10px] font-black uppercase tracking-[0.45em] text-indigo-600 mb-4">Built for the busy professional</p>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-tight italic leading-tight">The Ultimate Bridge</h2>
+                <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-medium">Most productivity tools are stuck inside your browser or require complex installations. Aeolo sits perfectly in the middle.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 mb-14 lg:mb-20">
+                <div class="bg-white rounded-[2rem] border border-slate-200 p-8 lg:p-10 shadow-lg shadow-slate-200/40 hover:shadow-xl hover:border-slate-300 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-500 mb-6">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M14.25 6.08694C14.25 5.73178 14.4361 5.41076 14.6512 5.1282C14.8721 4.8381 15 4.494 15 4.125C15 3.08947 13.9926 2.25 12.75 2.25C11.5074 2.25 10.5 3.08947 10.5 4.125C10.5 4.494 10.6279 4.8381 10.8488 5.1282C11.064 5.41076 11.25 5.73178 11.25 6.08694V6.08694C11.25 6.44822 10.9542 6.73997 10.593 6.72957C9.18939 6.68914 7.80084 6.58845 6.42989 6.43C6.61626 8.04276 6.72269 9.67987 6.74511 11.3373C6.75007 11.7032 6.45293 12 6.08694 12V12C5.73178 12 5.41076 11.814 5.1282 11.5988C4.8381 11.3779 4.494 11.25 4.125 11.25C3.08947 11.25 2.25 12.2574 2.25 13.5C2.25 14.7426 3.08947 15.75 4.125 15.75C4.494 15.75 4.8381 15.6221 5.1282 15.4012C5.41076 15.186 5.73178 15 6.08694 15V15C6.39613 15 6.64157 15.2608 6.6189 15.5691C6.49306 17.2812 6.27742 18.9682 5.97668 20.6256C7.49458 20.8157 9.03451 20.9348 10.5931 20.9797C10.9542 20.9901 11.2501 20.6983 11.2501 20.337V20.337C11.2501 19.9818 11.0641 19.6608 10.8489 19.3782C10.628 19.0881 10.5001 18.744 10.5001 18.375C10.5001 17.3395 11.5075 16.5 12.7501 16.5C13.9928 16.5 15.0001 17.3395 15.0001 18.375C15.0001 18.744 14.8722 19.0881 14.6513 19.3782C14.4362 19.6608 14.2501 19.9818 14.2501 20.337V20.337C14.2501 20.6699 14.5281 20.9357 14.8605 20.9161C16.6992 20.8081 18.5102 20.5965 20.2876 20.2872C20.5571 18.7389 20.7523 17.1652 20.8696 15.5698C20.8923 15.2611 20.6466 15 20.3371 15V15C19.9819 15 19.6609 15.1861 19.3783 15.4013C19.0882 15.6221 18.7441 15.75 18.3751 15.75C17.3396 15.75 16.5001 14.7427 16.5001 13.5C16.5001 12.2574 17.3396 11.25 18.3751 11.25C18.7441 11.25 19.0882 11.378 19.3783 11.5988C19.6609 11.814 19.9819 12 20.3371 12V12C20.7034 12 21.0008 11.703 20.9959 11.3367C20.9713 9.52413 20.8463 7.73572 20.6261 5.97698C18.7403 6.31916 16.816 6.55115 14.8603 6.66605C14.528 6.68557 14.25 6.41979 14.25 6.08694V6.08694Z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xs font-black uppercase tracking-[0.35em] text-slate-900 mb-4">Browser Extensions</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Stuck in the browser ecosystem. Cannot open local folders or desktop apps. Consume massive RAM.</p>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-[2rem] border border-indigo-500/50 p-8 lg:p-10 shadow-xl shadow-indigo-900/30 ring-2 ring-indigo-400/30 z-10 md:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center text-white mb-6 backdrop-blur-sm">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" /><path d="M9.6 4.6A2 2 0 1 1 11 8H2" /><path d="M12.6 19.4A2 2 0 1 0 14 16H2" /></svg>
+                    </div>
+                    <h3 class="text-xs font-black uppercase tracking-[0.35em] text-white mb-4">Aeolo Script</h3>
+                    <p class="text-sm text-indigo-100 leading-relaxed font-medium">Opens Web URLs, Local Folders, and Heavy <span class="text-white font-black">.exe</span> Apps simultaneously. Zero background RAM usage.</p>
+                </div>
+                <div class="bg-white rounded-[2rem] border border-slate-200 p-8 lg:p-10 shadow-lg shadow-slate-200/40 hover:shadow-xl hover:border-slate-300 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-500 mb-6">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M8.25 3V4.5M4.5 8.25H3M21 8.25H19.5M4.5 12H3M21 12H19.5M4.5 15.75H3M21 15.75H19.5M8.25 19.5V21M12 3V4.5M12 19.5V21M15.75 3V4.5M15.75 19.5V21M6.75 19.5H17.25C18.4926 19.5 19.5 18.4926 19.5 17.25V6.75C19.5 5.50736 18.4926 4.5 17.25 4.5H6.75C5.50736 4.5 4.5 5.50736 4.5 6.75V17.25C4.5 18.4926 5.50736 19.5 6.75 19.5ZM7.5 7.5H16.5V16.5H7.5V7.5Z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xs font-black uppercase tracking-[0.35em] text-slate-900 mb-4">Macro Software</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">High learning curve. Require heavy installation. Often blocked by corporate IT policies.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 mb-12">
+                <div class="rounded-[2rem] border border-emerald-200 bg-emerald-50/60 p-8 lg:p-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-2 h-8 bg-emerald-500 rounded-full"></span>
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-emerald-800">Zero Installation (IT Friendly)</h3>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed">No MSI rollout, no admin rights drama. Aeolo is a static page in your browser—you design the script, download a plain <b class="text-slate-900">.bat</b> or <b class="text-slate-900">.sh</b>, and your stack is live. Security teams see transparent text, not a black-box agent.</p>
+                </div>
+                <div class="rounded-[2rem] border border-indigo-200 bg-indigo-50/50 p-8 lg:p-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-2 h-8 bg-indigo-600 rounded-full"></span>
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-indigo-900">Smart Delay Engine</h3>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed">Throttle launches between heavy apps so your machine stays responsive. Same professional rhythm every morning—URLs first, then disk-heavy tools, timed to perfection.</p>
+                </div>
+            </div>
+
+            <div id="why-stat-block" class="relative overflow-hidden rounded-[2.5rem] bg-slate-900 text-center px-8 py-12 lg:py-16 border border-slate-800 shadow-2xl">
+                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-600/40 via-transparent to-emerald-500/20 pointer-events-none"></div>
+                <p class="relative z-10 text-[10px] font-black uppercase tracking-[0.5em] text-indigo-300 mb-3">Efficiency metric</p>
+                <p id="why-hours-stat" class="relative z-10 text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight italic tabular-nums" data-hours-target="20.8">0.0</p>
+                <p class="relative z-10 mt-2 text-lg font-black uppercase tracking-widest text-slate-300">Hours saved annually</p>
+                <p class="relative z-10 mt-6 max-w-xl mx-auto text-xs text-slate-400 leading-relaxed">~25 minutes/week × 50 work weeks = 1,250 minutes ≈ <b class="text-slate-300">20.8 hours</b>—a conservative floor for anyone juggling browsers, folders, and native apps every morning.</p>
+            </div>
+        </section>
+
+        <!-- USE CASES VIEW -->
+        <section id="usecases-container" class="hidden max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20">
+            <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+                <p class="text-[10px] font-black uppercase tracking-[0.45em] text-indigo-600 mb-4">Global reach · High Efficiency</p>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-tight italic leading-tight">High-Efficiency Use Cases</h2>
+                <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-medium">Tailored example stacks for professionals who value extreme efficiency.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                    </div>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">Wall Street Day Traders</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>TradingView</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Discord</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">C:\Trading\Logs</code></span></li>
+                    </ul>
+                </article>
+                <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 ring-2 ring-indigo-100/80">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.25 14.1499V18.4C20.25 19.4944 19.4631 20.4359 18.3782 20.58C16.2915 20.857 14.1624 21 12 21C9.83757 21 7.70854 20.857 5.62185 20.58C4.5369 20.4359 3.75 19.4944 3.75 18.4V14.1499M20.25 14.1499C20.7219 13.7476 21 13.1389 21 12.4889V8.70569C21 7.62475 20.2321 6.69082 19.1631 6.53086C18.0377 6.36247 16.8995 6.23315 15.75 6.14432M20.25 14.1499C20.0564 14.315 19.8302 14.4453 19.5771 14.5294C17.1953 15.3212 14.6477 15.75 12 15.75C9.35229 15.75 6.80469 15.3212 4.42289 14.5294C4.16984 14.4452 3.94361 14.3149 3.75 14.1499M3.75 14.1499C3.27808 13.7476 3 13.1389 3 12.4889V8.70569C3 7.62475 3.7679 6.69082 4.83694 6.53086C5.96233 6.36247 7.10049 6.23315 8.25 6.14432M15.75 6.14432V5.25C15.75 4.00736 14.7426 3 13.5 3H10.5C9.25736 3 8.25 4.00736 8.25 5.25V6.14432M15.75 6.14432C14.5126 6.0487 13.262 6 12 6C10.738 6 9.48744 6.0487 8.25 6.14432M12 12.75H12.0075V12.7575H12V12.75Z" /></svg>
+                    </div>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">HR Onboarding</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 mb-1">B2B scalable</p>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Company Intranet</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Slack</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">Z:\Shared_Drive</code></span></li>
+                    </ul>
+                </article>
+                <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">CPA &amp; Accounting</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Web Banking</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>QuickBooks / ERP</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">C:\Clients</code></span></li>
+                    </ul>
+                </article>
+                <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" /></svg>
+                    </div>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">Content Creators</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>YouTube Studio</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Premiere Pro</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">D:\Sound_FX</code></span></li>
+                    </ul>
+                </article>
+                <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>
+                    </div>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">Software Engineers</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">localhost:3000</code></span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>VS Code &amp; Docker</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">~/Projects</code></span></li>
+                    </ul>
+                </article>
+                <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.25 21H21.75M3.75 3V21M14.25 3V21M20.25 7.5V21M6.75 6.75H7.5M6.75 9.75H7.5M6.75 12.75H7.5M10.5 6.75H11.25M10.5 9.75H11.25M10.5 12.75H11.25M6.75 21V17.625C6.75 17.0037 7.25368 16.5 7.875 16.5H10.125C10.7463 16.5 11.25 17.0037 11.25 17.625V21M3 3H15M14.25 7.5H21M17.25 11.25H17.2575V11.2575H17.25V11.25ZM17.25 14.25H17.2575V14.2575H17.25V14.25ZM17.25 17.25H17.2575V17.2575H17.25V17.25Z" /></svg>
+                    </div>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">Real Estate Agents</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Zillow Admin</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>WhatsApp Desktop</span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">C:\New_Photos</code></span></li>
+                    </ul>
+                </article>
             </div>
         </section>
 

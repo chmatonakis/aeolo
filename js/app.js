@@ -33,9 +33,13 @@
             importFeedback: document.getElementById('import-feedback'),
             addBtns: document.querySelectorAll('[data-add]'),
             viewGenBtn: document.getElementById('view-generator'),
+            viewWhyBtn: document.getElementById('view-why'),
+            viewUsecasesBtn: document.getElementById('view-usecases'),
             viewStoryBtn: document.getElementById('view-story'),
             viewGuideBtn: document.getElementById('view-guide'),
             genContainer: document.getElementById('generator-container'),
+            whyContainer: document.getElementById('why-container'),
+            usecasesContainer: document.getElementById('usecases-container'),
             storyContainer: document.getElementById('story-container'),
             guideContainer: document.getElementById('guide-container'),
             logo: document.getElementById('nav-logo')
@@ -50,8 +54,10 @@
 
         const WIN_BTN_ACTIVE = 'px-8 py-3 text-[10px] font-black rounded-xl transition-all bg-white shadow-sm text-slate-900 uppercase tracking-widest';
         const BTN_INACTIVE = 'px-8 py-3 text-[10px] font-black rounded-xl transition-all text-slate-400 hover:text-slate-600 uppercase tracking-widest';
-        const NAV_ACTIVE = 'text-xs font-black uppercase tracking-widest text-indigo-600 border-b-2 border-indigo-600 pb-1 transition-all';
-        const NAV_INACTIVE = 'text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent';
+        const NAV_ACTIVE =
+            'text-[10px] sm:text-xs font-black uppercase tracking-widest text-indigo-600 border-b-2 border-indigo-600 pb-1 transition-all whitespace-nowrap';
+        const NAV_INACTIVE =
+            'text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap';
 
         const WIN_START_RE = /^\s*start\s+""\s+(?:(msedge|chrome|firefox)\s+)?"([^"]*)"\s*$/i;
         const WIN_TIMEOUT_RE = /^\s*timeout\s+\/t\s+(\d+)\b/i;
@@ -60,6 +66,62 @@
 
         let importFeedbackTimer;
         let dragSrcId = null;
+
+        let whyHoursRaf = null;
+        let whyHoursAnimStarted = false;
+
+        function resetWhyEfficiencyStat() {
+            if (whyHoursRaf) {
+                cancelAnimationFrame(whyHoursRaf);
+                whyHoursRaf = null;
+            }
+            whyHoursAnimStarted = false;
+            const el = document.getElementById('why-hours-stat');
+            if (el) el.textContent = '0.0';
+        }
+
+        function startWhyHoursCountUp() {
+            const el = document.getElementById('why-hours-stat');
+            if (!el || whyHoursAnimStarted) return;
+            whyHoursAnimStarted = true;
+            const target = parseFloat(el.getAttribute('data-hours-target') || '20.8') || 20.8;
+            const duration = 1400;
+            const t0 = performance.now();
+            function frame(now) {
+                const t = Math.min(1, (now - t0) / duration);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = (target * eased).toFixed(1);
+                if (t < 1) {
+                    whyHoursRaf = requestAnimationFrame(frame);
+                } else {
+                    whyHoursRaf = null;
+                    el.textContent = target.toFixed(1);
+                }
+            }
+            whyHoursRaf = requestAnimationFrame(frame);
+        }
+
+        function initWhyEfficiencyStat() {
+            const block = document.getElementById('why-stat-block');
+            const el = document.getElementById('why-hours-stat');
+            if (!block || !el) return;
+            if (!('IntersectionObserver' in window)) {
+                const target = parseFloat(el.getAttribute('data-hours-target') || '20.8') || 20.8;
+                el.textContent = target.toFixed(1);
+                return;
+            }
+            const io = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        if (dom.whyContainer.classList.contains('hidden')) return;
+                        startWhyHoursCountUp();
+                    });
+                },
+                { threshold: 0.22, rootMargin: '0px 0px -8% 0px' }
+            );
+            io.observe(block);
+        }
 
         function escapeAttr(str) {
             return String(str)
@@ -272,15 +334,38 @@
         }
 
         function toggleView(view) {
-            const containers = [dom.genContainer, dom.storyContainer, dom.guideContainer];
-            const buttons = [dom.viewGenBtn, dom.viewStoryBtn, dom.viewGuideBtn];
+            const wasWhy = dom.whyContainer && !dom.whyContainer.classList.contains('hidden');
+            const containers = [
+                dom.genContainer,
+                dom.whyContainer,
+                dom.usecasesContainer,
+                dom.storyContainer,
+                dom.guideContainer
+            ];
+            const buttons = [
+                dom.viewGenBtn,
+                dom.viewWhyBtn,
+                dom.viewUsecasesBtn,
+                dom.viewStoryBtn,
+                dom.viewGuideBtn
+            ];
 
-            containers.forEach((c) => c.classList.add('hidden'));
-            buttons.forEach((b) => (b.className = NAV_INACTIVE));
+            containers.forEach((c) => {
+                if (c) c.classList.add('hidden');
+            });
+            buttons.forEach((b) => {
+                if (b) b.className = NAV_INACTIVE;
+            });
 
             if (view === 'generator') {
                 dom.genContainer.classList.remove('hidden');
                 dom.viewGenBtn.className = NAV_ACTIVE;
+            } else if (view === 'why') {
+                dom.whyContainer.classList.remove('hidden');
+                dom.viewWhyBtn.className = NAV_ACTIVE;
+            } else if (view === 'usecases') {
+                dom.usecasesContainer.classList.remove('hidden');
+                dom.viewUsecasesBtn.className = NAV_ACTIVE;
             } else if (view === 'story') {
                 dom.storyContainer.classList.remove('hidden');
                 dom.viewStoryBtn.className = NAV_ACTIVE;
@@ -288,10 +373,15 @@
                 dom.guideContainer.classList.remove('hidden');
                 dom.viewGuideBtn.className = NAV_ACTIVE;
             }
+            if (wasWhy && view !== 'why') {
+                resetWhyEfficiencyStat();
+            }
             window.scrollTo(0, 0);
         }
 
         dom.viewGenBtn.addEventListener('click', () => toggleView('generator'));
+        dom.viewWhyBtn.addEventListener('click', () => toggleView('why'));
+        dom.viewUsecasesBtn.addEventListener('click', () => toggleView('usecases'));
         dom.viewStoryBtn.addEventListener('click', () => toggleView('story'));
         dom.viewGuideBtn.addEventListener('click', () => toggleView('guide'));
         dom.logo.addEventListener('click', () => toggleView('generator'));
@@ -668,6 +758,8 @@
                 }, 3500);
             }
         });
+
+        initWhyEfficiencyStat();
 
         renderItems();
         refreshScript();
