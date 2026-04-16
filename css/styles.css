@@ -24,3 +24,17 @@ select {
     -moz-appearance: none;
     appearance: none;
 }
+
+/* Stack row drag-and-drop */
+.aeolo-drag-handle {
+    touch-action: none;
+}
+.aeolo-stack-row.aeolo-row--dragging {
+    opacity: 0.45;
+}
+.aeolo-stack-row.aeolo-row--over-before {
+    box-shadow: inset 0 3px 0 0 rgb(99 102 241);
+}
+.aeolo-stack-row.aeolo-row--over-after {
+    box-shadow: inset 0 -3px 0 0 rgb(99 102 241);
+}
