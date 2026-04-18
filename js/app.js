@@ -75,6 +75,147 @@
         const MAC_OPEN_RE = /^\s*open\s+"([^"]*)"\s*$/;
         const MAC_SLEEP_RE = /^\s*sleep\s+(\d+)\b/i;
 
+        /**
+         * Starter stacks aligned with Use Cases — paths are placeholders to edit before release.
+         * Each entry: windows/mac rows with explicit type where inference would be wrong.
+         */
+        const AELO_STACK_PRESETS = {
+            traders: {
+                filename: 'day_trader_stack',
+                delay: 2,
+                browser: 'default',
+                windows: [
+                    { type: 'url', value: 'https://www.tradingview.com/chart/' },
+                    { type: 'url', value: 'https://discord.com/channels/@me' },
+                    { type: 'folder', value: 'C:\\Trading\\Logs' }
+                ],
+                mac: [
+                    { type: 'url', value: 'https://www.tradingview.com/chart/' },
+                    { type: 'url', value: 'https://discord.com/channels/@me' },
+                    { type: 'folder', value: '/Users/Shared/Trading/Logs' }
+                ]
+            },
+            hr: {
+                filename: 'hr_onboarding_stack',
+                delay: 2,
+                browser: 'default',
+                windows: [
+                    { type: 'url', value: 'https://intranet.example.com' },
+                    { type: 'url', value: 'https://slack.com/signin' },
+                    { type: 'folder', value: 'Z:\\Shared_Drive' }
+                ],
+                mac: [
+                    { type: 'url', value: 'https://intranet.example.com' },
+                    { type: 'url', value: 'https://slack.com/signin' },
+                    { type: 'folder', value: '/Users/Shared/Company_Shared' }
+                ]
+            },
+            cpa: {
+                filename: 'cpa_morning_stack',
+                delay: 2,
+                browser: 'default',
+                windows: [
+                    { type: 'url', value: 'https://example.com/bank' },
+                    { type: 'url', value: 'https://app.qbo.intuit.com/app/homepage' },
+                    { type: 'folder', value: 'C:\\Clients' }
+                ],
+                mac: [
+                    { type: 'url', value: 'https://example.com/bank' },
+                    { type: 'url', value: 'https://app.qbo.intuit.com/app/homepage' },
+                    { type: 'folder', value: '/Users/Shared/Clients' }
+                ]
+            },
+            creators: {
+                filename: 'creator_stack',
+                delay: 2,
+                browser: 'default',
+                windows: [
+                    { type: 'url', value: 'https://studio.youtube.com/' },
+                    {
+                        type: 'app',
+                        value:
+                            'C:\\Program Files\\Adobe\\Adobe Premiere Pro 2025\\Adobe Premiere Pro.exe'
+                    },
+                    { type: 'folder', value: 'D:\\Sound_FX' }
+                ],
+                mac: [
+                    { type: 'url', value: 'https://studio.youtube.com/' },
+                    {
+                        type: 'app',
+                        value:
+                            '/Applications/Adobe Premiere Pro 2025/Adobe Premiere Pro 2025.app'
+                    },
+                    { type: 'folder', value: '/Users/Shared/Sound_FX' }
+                ]
+            },
+            engineers: {
+                filename: 'dev_stack',
+                delay: 2,
+                browser: 'chrome',
+                windows: [
+                    { type: 'url', value: 'http://localhost:3000/' },
+                    {
+                        type: 'app',
+                        value:
+                            'C:\\Users\\%USERNAME%\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe'
+                    },
+                    { type: 'folder', value: '%USERPROFILE%\\Projects' }
+                ],
+                mac: [
+                    { type: 'url', value: 'http://localhost:3000/' },
+                    { type: 'app', value: '/Applications/Visual Studio Code.app' },
+                    { type: 'folder', value: '/Users/Shared/Projects' }
+                ]
+            },
+            realtors: {
+                filename: 'realtor_stack',
+                delay: 2,
+                browser: 'default',
+                windows: [
+                    { type: 'url', value: 'https://www.zillow.com/realestateprofessional/' },
+                    {
+                        type: 'app',
+                        value:
+                            'C:\\Users\\%USERNAME%\\AppData\\Local\\WhatsApp\\WhatsApp.exe'
+                    },
+                    { type: 'folder', value: 'C:\\New_Photos' }
+                ],
+                mac: [
+                    { type: 'url', value: 'https://www.zillow.com/realestateprofessional/' },
+                    { type: 'app', value: '/Applications/WhatsApp.app' },
+                    { type: 'folder', value: '/Users/Shared/New_Photos' }
+                ]
+            }
+        };
+
+        function applyStackPreset(presetId) {
+            const spec = AELO_STACK_PRESETS[presetId];
+            if (!spec) return;
+            const rows = currentOS === 'windows' ? spec.windows : spec.mac;
+            let nid = Date.now();
+            items = rows.map((r) => ({
+                id: nid++,
+                type: r.type || inferItemType(r.value),
+                value: r.value
+            }));
+            dom.delay.value = String(spec.delay != null ? spec.delay : 2);
+            if (
+                currentOS === 'windows' &&
+                spec.browser &&
+                ['default', 'msedge', 'chrome', 'firefox'].includes(spec.browser)
+            ) {
+                dom.browser.value = spec.browser;
+            }
+            if (spec.filename) dom.filename.value = sanitizeFilename(spec.filename);
+            renderItems();
+            refreshScript();
+            toggleView('generator');
+            showImportFeedback(
+                aeT('preset_loaded', { name: aeT('preset_name_' + presetId) }),
+                false
+            );
+        }
+
         let importFeedbackTimer;
         let dragSrcId = null;
 
@@ -397,6 +538,31 @@
         dom.viewGuideBtn.addEventListener('click', () => toggleView('guide'));
         dom.logo.addEventListener('click', () => toggleView('generator'));
         dom.previewOpenGuide.addEventListener('click', () => toggleView('guide'));
+
+        document.body.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-aeolo-preset]');
+            if (!btn) return;
+            const presetId = btn.getAttribute('data-aeolo-preset');
+            if (!presetId || !AELO_STACK_PRESETS[presetId]) return;
+            e.preventDefault();
+            applyStackPreset(presetId);
+        });
+
+        const heroCtaStack = document.getElementById('hero-cta-stack');
+        const heroCtaWhy = document.getElementById('hero-cta-why');
+        if (heroCtaStack) {
+            heroCtaStack.addEventListener('click', () => {
+                const anchor = document.getElementById('release-stack-anchor');
+                if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => {
+                    const inp = dom.list.querySelector('input[data-action="edit"]');
+                    if (inp) inp.focus({ preventScroll: true });
+                }, 450);
+            });
+        }
+        if (heroCtaWhy) {
+            heroCtaWhy.addEventListener('click', () => toggleView('why'));
+        }
 
         function setPlatform(os) {
             currentOS = os;

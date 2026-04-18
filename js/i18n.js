@@ -55,7 +55,35 @@
         ph_app_mac: { en: '/Applications/App.app', el: '/Applications/App.app' },
         ph_folder_win: { en: 'C:\\\\Path\\\\to\\\\folder', el: 'C:\\\\Διαδρομή\\\\προς\\\\φάκελο' },
         ph_folder_mac: { en: '/Users/Path/to/folder', el: '/Users/Path/to/folder' },
-        row_aria: { en: 'Step {{n}}', el: 'Βήμα {{n}}' }
+        row_aria: { en: 'Step {{n}}', el: 'Βήμα {{n}}' },
+        preset_loaded: {
+            en: 'Loaded “{{name}}”. Edit paths, then release your script.',
+            el: 'Φορτώθηκε «{{name}}». Επεξεργάσου τις διαδρομές και μετά «Άφησε το script».'
+        },
+        preset_name_traders: {
+            en: 'Wall Street day traders',
+            el: 'Ημερήσιοι traders (Wall Street)'
+        },
+        preset_name_hr: {
+            en: 'HR onboarding',
+            el: 'HR onboarding'
+        },
+        preset_name_cpa: {
+            en: 'CPA & accounting',
+            el: 'Ελεγκτές & λογιστική'
+        },
+        preset_name_creators: {
+            en: 'Content creators',
+            el: 'Δημιουργοί περιεχομένου'
+        },
+        preset_name_engineers: {
+            en: 'Software engineers',
+            el: 'Μηχανικοί λογισμικού'
+        },
+        preset_name_realtors: {
+            en: 'Real estate agents',
+            el: 'Μεσίτες ακινήτων'
+        }
     };
 
     /** Greek only; English taken from DOM snapshot for matching data-i18n keys. */
@@ -72,6 +100,10 @@
             'Ξεκλείδωσε την εργάσιμη μέρα σου <br/><span class="text-indigo-600">με μια ανάσα.</span>',
         hero_sub_html:
             'Αυτοματοποίησε την εκκίνηση του χώρου εργασίας σου με <b>άμεσα</b> ανοίγματα με ένα κλικ. Το Aeolo δημιουργεί υψηλής απόδοσης scripts για να <b>ανοίγεις</b> καρτέλες, φακέλους, αρχεία, επιπλέον ρουτίνες batch/shell και εφαρμογές στη στιγμή—<b>ιδιωτικά</b> και <b>ασφαλή</b> εξ ορισμού: όλα τρέχουν στον browser σου, δεν ανεβαίνει τίποτα, και η ρουτίνα σου μένει στον υπολογιστή σου.',
+        hero_cta_kicker: 'Ξεκίνα εδώ',
+        hero_cta_stack: 'Χτίσε τη στοίβα σου',
+        hero_cta_why: 'Γιατί Aeolo;',
+        hero_cta_hint: 'Δωρεάν · Στον browser σου · Ανοιχτός κώδικας στο GitHub',
         engine_configuration: 'Ρυθμίσεις μηχανής',
         os_windows: 'Windows (.bat)',
         os_mac: 'macOS (.sh)',
@@ -159,7 +191,7 @@
         usecases_kicker: 'Παγκόσμια εμβέλεια · Υψηλή αποδοτικότητα',
         usecases_title: 'Περιπτώσεις χρήσης υψηλής αποδοτικότητας',
         usecases_intro:
-            'Ενδεικτικές στοίβες για επαγγελματίες που τιμούν την ακραία αποδοτικότητα.',
+            'Ενδεικτικές στοίβες για επαγγελματίες που τιμούν την ακραία αποδοτικότητα. Σε κάθε κάρτα, <span class="text-slate-800 font-bold">Φόρτωση στον δημιουργό</span> αντιγράφει την ίδια δομή στον Generator — μετά επεξεργάσου διαδρομές και «Άφησε το script».',
         uc_stack: 'Στοίβα',
         uc_traders: 'Ημερήσιοι traders (Wall Street)',
         uc_hr: 'HR onboarding',
@@ -168,10 +200,46 @@
         uc_creators: 'Δημιουργοί περιεχομένου',
         uc_engineers: 'Μηχανικοί λογισμικού',
         uc_realtors: 'Μεσίτες ακινήτων',
+        why_for_title: 'Για ποιους είναι',
+        why_for_1: 'Λογιστές & οικονομολόγοι που ανοίγουν κάθε πρωί banking, ERP και φακέλους πελατών',
+        why_for_2: 'Γραμματείς & διοικητικοί με σταθερό πακέτο εκκίνησης',
+        why_for_3: 'Ελεύθεροι επαγγελματίες που θέλουν ξεχωριστή ρουτίνα ανά πελάτη ή project',
+        why_for_4: 'HR managers που ενσωματώνουν νέους υπαλλήλους με ένα κοινοποιήσιμο αρχείο',
+        why_notfor_title: 'Για ποιους δεν είναι',
+        why_notfor_1: 'Χρήστες browser-only — τα Tab Groups ή extensions τα καλύπτουν ήδη',
+        why_notfor_2: 'Developers & power users που γράφουν μόνοι τους scripts',
+        why_notfor_3: 'Όσοι χρειάζονται επαναφορά θέσης παραθύρων — άλλα εργαλεία το κάνουν αυτό',
+        why_notfor_4: 'Όσοι ψάχνουν macro αυτοματισμό (κλικ, πληκτρολόγηση) — το Aeolo ανοίγει, δεν αλληλεπιδρά',
+        why_compare_kicker: 'Ειλικρινής σύγκριση',
+        why_compare_title: 'Aeolo έναντι άλλων λύσεων',
+        why_compare_intro: 'Δύο διαφορετικές φιλοσοφίες για τον ίδιο στόχο: να μπεις γρήγορα σε ροή. Καμία δεν είναι καλύτερη από την άλλη — εξυπηρετούν διαφορετικές ανάγκες.',
+        why_tbl_criterion: 'Κριτήριο',
+        why_tbl_aeolo: 'Aeolo',
+        why_tbl_ext: 'Browser Extensions',
+        why_tbl_restore: 'Εργαλεία Restore',
+        why_tbl_macro: 'Εργαλεία Macro',
+        why_tbl_r_urls: 'Άνοιγμα URLs',
+        why_tbl_r_local: 'Άνοιγμα τοπικών φακέλων & apps',
+        why_tbl_r_install: 'Χωρίς εγκατάσταση',
+        why_tbl_r_code: 'Χωρίς κώδικα',
+        why_tbl_r_share: 'Κοινοποιήσιμο ως ένα αρχείο',
+        why_tbl_r_privacy: '100% ιδιωτικό — τίποτα δεν φεύγει από το μηχάνημα',
+        why_tbl_r_layout: 'Επαναφορά θέσεων παραθύρων',
+        why_tbl_r_bgram: 'Μηδενική χρήση RAM στο background',
+        why_tbl_r_cost: 'Δωρεάν',
+        why_tbl_legend: '✓ Ναι &nbsp;·&nbsp; ✗ Όχι &nbsp;·&nbsp; ~ Μερικώς ή εξαρτάται',
+        starter_stacks_label: 'Πρότυπα στοίβας',
+        uc_load_builder: 'Φόρτωση στον δημιουργό',
+        preset_pill_traders: 'Traders',
+        preset_pill_hr: 'HR',
+        preset_pill_cpa: 'CPA',
+        preset_pill_creators: 'Creators',
+        preset_pill_engineers: 'Devs',
+        preset_pill_realtors: 'Realtors',
         guide_title: 'Οδηγός & επίλυση προβλημάτων',
         guide_01_h: 'Πώς να χρησιμοποιήσεις το Aeolo',
         guide_li1_html:
-            'Πρόσθεσε URLs, <b class="text-slate-800">φακέλους</b>, <b class="text-slate-800">έγγραφα</b> (π.χ. <b class="text-slate-800">.xlsx</b> με πλήρη διαδρομή), <b class="text-slate-800">άλλες ρουτίνες</b> (άλλο <b class="text-slate-800">.bat</b> / <b class="text-slate-800">.cmd</b> σε Windows — τρέχει με τη σειρά· σε Mac άλλο <b class="text-slate-800">.sh</b> με <code class="inline rounded bg-slate-100 px-1 py-0.5 text-slate-700 font-mono text-[10px] align-baseline">bash</code>), ή <b class="text-slate-800">.exe / .app</b>. Τα βήματα είναι <b class="text-slate-800">αριθμημένα</b> (1 = πρώτο). <b class="text-slate-800">Σύρε τη λαβή</b> για αναδιάταξη.',
+            'Πρόσθεσε URLs, <b class="text-slate-800">φακέλους</b>, <b class="text-slate-800">έγγραφα</b> (π.χ. <b class="text-slate-800">.xlsx</b> με πλήρη διαδρομή), <b class="text-slate-800">άλλες ρουτίνες</b> (άλλο <b class="text-slate-800">.bat</b> / <b class="text-slate-800">.cmd</b> σε Windows — τρέχει με τη σειρά· σε Mac άλλο <b class="text-slate-800">.sh</b> με <code class="inline rounded bg-slate-100 px-1 py-0.5 text-slate-700 font-mono text-xs align-baseline">bash</code>), ή <b class="text-slate-800">.exe / .app</b>. Τα βήματα είναι <b class="text-slate-800">αριθμημένα</b> (1 = πρώτο). <b class="text-slate-800">Σύρε τη λαβή</b> για αναδιάταξη.',
         guide_li2: 'Διάλεξε λειτουργικό σύστημα (Windows ή macOS).',
         guide_li3: 'Πάτα «Άφησε το script» και αποθήκευσε το αρχείο στην επιφάνεια εργασίας.',
         guide_li4: 'Διπλό κλικ στο αρχείο κάθε φορά που ξεκινάς τη μέρα σου!',

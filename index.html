@@ -72,13 +72,28 @@
 
         <!-- GENERATOR VIEW -->
         <main id="generator-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
-            <div class="mb-12 lg:mb-16 text-center lg:text-left">
-                <h1 class="text-[3.1875rem] lg:text-[5.1rem] font-black text-slate-900 tracking-tight leading-[0.85] max-w-4xl mb-10 italic uppercase" data-i18n-html="hero_h1_html">
-                    Release your workday <br/><span class="text-indigo-600">in one breath.</span>
-                </h1>
-                <p class="text-xl lg:text-2xl text-slate-600 max-w-2xl leading-relaxed" data-i18n-html="hero_sub_html">
-                    Automate your workspace startup with <b>immediate</b>, one-click launches. Aeolo builds high-performance scripts to <b>release</b> your tabs, folders, files, extra batch/shell routines, and apps in an instant—<b>private</b> and <b>secure</b> by design: everything runs in your browser, nothing is uploaded, and your routine stays on your machine.
-                </p>
+            <div class="mb-12 lg:mb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-14 items-start">
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <h1 class="text-[3.1875rem] lg:text-[5.1rem] font-black text-slate-900 tracking-tight leading-[0.85] max-w-4xl mb-10 italic uppercase mx-auto lg:mx-0" data-i18n-html="hero_h1_html">
+                        Release your workday <br/><span class="text-indigo-600">in one breath.</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-slate-600 max-w-2xl leading-relaxed mx-auto lg:mx-0" data-i18n-html="hero_sub_html">
+                        Automate your workspace startup with <b>immediate</b>, one-click launches. Aeolo builds high-performance scripts to <b>release</b> your tabs, folders, files, extra batch/shell routines, and apps in an instant—<b>private</b> and <b>secure</b> by design: everything runs in your browser, nothing is uploaded, and your routine stays on your machine.
+                    </p>
+                </div>
+                <div class="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none lg:mx-0 lg:pt-2">
+                    <div class="rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-xl shadow-slate-200/60 ring-1 ring-slate-100/80">
+                        <p class="text-[10px] font-black uppercase tracking-[0.35em] text-slate-400 mb-5 text-center lg:text-left" data-i18n="hero_cta_kicker">Get started</p>
+                        <button type="button" id="hero-cta-stack" class="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs uppercase tracking-[0.2em] shadow-lg shadow-indigo-900/25 transition-all active:scale-[0.99]">
+                            <svg class="w-5 h-5 shrink-0 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" /></svg>
+                            <span data-i18n="hero_cta_stack">Build your stack</span>
+                        </button>
+                        <button type="button" id="hero-cta-why" class="w-full mt-3 py-4 px-6 rounded-2xl border-2 border-slate-200 bg-white text-slate-700 hover:border-indigo-200 hover:bg-indigo-50/60 hover:text-indigo-900 font-black text-xs uppercase tracking-[0.18em] transition-all active:scale-[0.99]" data-i18n="hero_cta_why">
+                            Why Aeolo?
+                        </button>
+                        <p class="mt-5 text-[11px] text-slate-400 text-center lg:text-left leading-relaxed font-medium" data-i18n="hero_cta_hint">Free · Runs in your browser · Open source on GitHub</p>
+                    </div>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10">
@@ -132,7 +147,7 @@
                     </div>
 
                     <!-- Release Stack -->
-                    <div class="bg-white rounded-[2.5rem] lg:rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 p-6 sm:p-8 lg:p-9">
+                    <div id="release-stack-anchor" class="bg-white rounded-[2.5rem] lg:rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-100 p-6 sm:p-8 lg:p-9 scroll-mt-28">
                         <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between mb-8">
                             <div class="flex items-center space-x-3">
                                 <div class="w-2 h-6 bg-indigo-600 rounded-full"></div>
@@ -149,6 +164,18 @@
                             </div>
                         </div>
                         <p id="import-feedback" class="hidden text-[11px] font-bold mb-4 px-1" role="status" aria-live="polite"></p>
+
+                        <div class="mb-8 rounded-[1.75rem] border border-slate-100 bg-gradient-to-br from-slate-50 to-indigo-50/30 p-5 sm:p-6">
+                            <p class="text-[10px] font-black uppercase tracking-[0.35em] text-slate-400 mb-4" data-i18n="starter_stacks_label">Starter stacks</p>
+                            <div class="flex flex-wrap gap-2" role="group" aria-label="Starter stacks">
+                                <button type="button" data-aeolo-preset="traders" class="text-[9px] font-black uppercase tracking-wider px-3 py-2.5 rounded-xl border border-white/80 bg-white/90 text-slate-600 shadow-sm hover:border-indigo-200 hover:text-indigo-700 hover:shadow transition-all active:scale-[0.98]" data-i18n="preset_pill_traders">Traders</button>
+                                <button type="button" data-aeolo-preset="hr" class="text-[9px] font-black uppercase tracking-wider px-3 py-2.5 rounded-xl border border-white/80 bg-white/90 text-slate-600 shadow-sm hover:border-indigo-200 hover:text-indigo-700 hover:shadow transition-all active:scale-[0.98]" data-i18n="preset_pill_hr">HR</button>
+                                <button type="button" data-aeolo-preset="cpa" class="text-[9px] font-black uppercase tracking-wider px-3 py-2.5 rounded-xl border border-white/80 bg-white/90 text-slate-600 shadow-sm hover:border-indigo-200 hover:text-indigo-700 hover:shadow transition-all active:scale-[0.98]" data-i18n="preset_pill_cpa">CPA</button>
+                                <button type="button" data-aeolo-preset="creators" class="text-[9px] font-black uppercase tracking-wider px-3 py-2.5 rounded-xl border border-white/80 bg-white/90 text-slate-600 shadow-sm hover:border-indigo-200 hover:text-indigo-700 hover:shadow transition-all active:scale-[0.98]" data-i18n="preset_pill_creators">Creators</button>
+                                <button type="button" data-aeolo-preset="engineers" class="text-[9px] font-black uppercase tracking-wider px-3 py-2.5 rounded-xl border border-white/80 bg-white/90 text-slate-600 shadow-sm hover:border-indigo-200 hover:text-indigo-700 hover:shadow transition-all active:scale-[0.98]" data-i18n="preset_pill_engineers">Devs</button>
+                                <button type="button" data-aeolo-preset="realtors" class="text-[9px] font-black uppercase tracking-wider px-3 py-2.5 rounded-xl border border-white/80 bg-white/90 text-slate-600 shadow-sm hover:border-indigo-200 hover:text-indigo-700 hover:shadow transition-all active:scale-[0.98]" data-i18n="preset_pill_realtors">Realtors</button>
+                            </div>
+                        </div>
 
                         <div id="items-list" class="space-y-4"></div>
 
@@ -292,7 +319,7 @@
             <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
                 <p class="text-[10px] font-black uppercase tracking-[0.45em] text-indigo-600 mb-4" data-i18n="why_kicker">Built for the busy professional</p>
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-tight italic leading-tight" data-i18n="why_title">The Ultimate Bridge</h2>
-                <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-medium" data-i18n="why_intro">Most productivity tools are stuck inside your browser or require complex installations. Aeolo sits perfectly in the middle.</p>
+                <p class="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed font-medium" data-i18n="why_intro">Most productivity tools are stuck inside your browser or require complex installations. Aeolo sits perfectly in the middle.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 mb-14 lg:mb-20">
@@ -303,14 +330,14 @@
                         </svg>
                     </div>
                     <h3 class="text-xs font-black uppercase tracking-[0.35em] text-slate-900 mb-4" data-i18n="why_ext_title">Browser Extensions</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed" data-i18n="why_ext_desc">Stuck in the browser ecosystem. Cannot open local folders or desktop apps. Consume massive RAM.</p>
+                    <p class="text-base text-slate-600 leading-relaxed" data-i18n="why_ext_desc">Stuck in the browser ecosystem. Cannot open local folders or desktop apps. Consume massive RAM.</p>
                 </div>
                 <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-[2rem] border border-indigo-500/50 p-8 lg:p-10 shadow-xl shadow-indigo-900/30 ring-2 ring-indigo-400/30 z-10 md:-translate-y-1">
                     <div class="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center text-white mb-6 backdrop-blur-sm">
                         <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" /><path d="M9.6 4.6A2 2 0 1 1 11 8H2" /><path d="M12.6 19.4A2 2 0 1 0 14 16H2" /></svg>
                     </div>
                     <h3 class="text-xs font-black uppercase tracking-[0.35em] text-white mb-4" data-i18n="why_aeolo_title">Aeolo Script</h3>
-                    <p class="text-sm text-indigo-100 leading-relaxed font-medium" data-i18n-html="why_aeolo_desc_html">Opens Web URLs, Local Folders, and Heavy <span class="text-white font-black">.exe</span> Apps simultaneously. Zero background RAM usage.</p>
+                    <p class="text-base text-indigo-100 leading-relaxed font-medium" data-i18n-html="why_aeolo_desc_html">Opens Web URLs, Local Folders, and Heavy <span class="text-white font-black">.exe</span> Apps simultaneously. Zero background RAM usage.</p>
                 </div>
                 <div class="bg-white rounded-[2rem] border border-slate-200 p-8 lg:p-10 shadow-lg shadow-slate-200/40 hover:shadow-xl hover:border-slate-300 transition-all">
                     <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-500 mb-6">
@@ -319,7 +346,7 @@
                         </svg>
                     </div>
                     <h3 class="text-xs font-black uppercase tracking-[0.35em] text-slate-900 mb-4" data-i18n="why_macro_title">Macro Software</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed" data-i18n="why_macro_desc">High learning curve. Require heavy installation. Often blocked by corporate IT policies.</p>
+                    <p class="text-base text-slate-600 leading-relaxed" data-i18n="why_macro_desc">High learning curve. Require heavy installation. Often blocked by corporate IT policies.</p>
                 </div>
             </div>
 
@@ -329,14 +356,14 @@
                         <span class="w-2 h-8 bg-emerald-500 rounded-full"></span>
                         <h3 class="text-xs font-black uppercase tracking-[0.4em] text-emerald-800" data-i18n="why_zero_title">Zero Installation (IT Friendly)</h3>
                     </div>
-                    <p class="text-sm text-slate-700 leading-relaxed" data-i18n-html="why_zero_body_html">No MSI rollout, no admin rights drama. Aeolo is a static page in your browser—you design the script, download a plain <b class="text-slate-900">.bat</b> or <b class="text-slate-900">.sh</b>, and your stack is live. Security teams see transparent text, not a black-box agent.</p>
+                    <p class="text-base text-slate-700 leading-relaxed" data-i18n-html="why_zero_body_html">No MSI rollout, no admin rights drama. Aeolo is a static page in your browser—you design the script, download a plain <b class="text-slate-900">.bat</b> or <b class="text-slate-900">.sh</b>, and your stack is live. Security teams see transparent text, not a black-box agent.</p>
                 </div>
                 <div class="rounded-[2rem] border border-indigo-200 bg-indigo-50/50 p-8 lg:p-10">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-2 h-8 bg-indigo-600 rounded-full"></span>
                         <h3 class="text-xs font-black uppercase tracking-[0.4em] text-indigo-900" data-i18n="why_delay_title">Smart Delay Engine</h3>
                     </div>
-                    <p class="text-sm text-slate-700 leading-relaxed" data-i18n="why_delay_body">Throttle launches between heavy apps so your machine stays responsive. Same professional rhythm every morning—URLs first, then disk-heavy tools, timed to perfection.</p>
+                    <p class="text-base text-slate-700 leading-relaxed" data-i18n="why_delay_body">Throttle launches between heavy apps so your machine stays responsive. Same professional rhythm every morning—URLs first, then disk-heavy tools, timed to perfection.</p>
                 </div>
             </div>
 
@@ -345,7 +372,123 @@
                 <p class="relative z-10 text-[10px] font-black uppercase tracking-[0.5em] text-indigo-300 mb-3" data-i18n="why_stat_label">Efficiency metric</p>
                 <p id="why-hours-stat" class="relative z-10 text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight italic tabular-nums" data-hours-target="20.8">0.0</p>
                 <p class="relative z-10 mt-2 text-lg font-black uppercase tracking-widest text-slate-300" data-i18n="why_stat_caption">Hours saved annually</p>
-                <p class="relative z-10 mt-6 max-w-xl mx-auto text-xs text-slate-400 leading-relaxed" data-i18n-html="why_stat_note_html">~25 minutes/week × 50 work weeks = 1,250 minutes ≈ <b class="text-slate-300">20.8 hours</b>—a conservative floor for anyone juggling browsers, folders, and native apps every morning.</p>
+                <p class="relative z-10 mt-6 max-w-xl mx-auto text-sm text-slate-400 leading-relaxed" data-i18n-html="why_stat_note_html">~25 minutes/week × 50 work weeks = 1,250 minutes ≈ <b class="text-slate-300">20.8 hours</b>—a conservative floor for anyone juggling browsers, folders, and native apps every morning.</p>
+            </div>
+
+            <!-- Who it's for / not for -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mt-10 lg:mt-14">
+                <div class="rounded-[2rem] border border-emerald-200 bg-emerald-50/60 p-8 lg:p-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-2 h-8 bg-emerald-500 rounded-full shrink-0"></span>
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-emerald-800" data-i18n="why_for_title">Who it's for</h3>
+                    </div>
+                    <ul class="space-y-3 text-base text-slate-700 leading-relaxed">
+                        <li class="flex gap-2"><span class="text-emerald-500 font-black shrink-0">→</span><span data-i18n="why_for_1">Accountants &amp; economists who open banking, ERP, and client folders every morning</span></li>
+                        <li class="flex gap-2"><span class="text-emerald-500 font-black shrink-0">→</span><span data-i18n="why_for_2">Admin &amp; office staff with a fixed daily startup kit</span></li>
+                        <li class="flex gap-2"><span class="text-emerald-500 font-black shrink-0">→</span><span data-i18n="why_for_3">Freelancers who want a separate routine per client or project</span></li>
+                        <li class="flex gap-2"><span class="text-emerald-500 font-black shrink-0">→</span><span data-i18n="why_for_4">HR managers who onboard new employees with a single shareable file</span></li>
+                    </ul>
+                </div>
+                <div class="rounded-[2rem] border border-slate-200 bg-slate-50/60 p-8 lg:p-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-2 h-8 bg-slate-400 rounded-full shrink-0"></span>
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-slate-600" data-i18n="why_notfor_title">Who it isn't for</h3>
+                    </div>
+                    <ul class="space-y-3 text-base text-slate-600 leading-relaxed">
+                        <li class="flex gap-2"><span class="text-slate-400 font-black shrink-0">×</span><span data-i18n="why_notfor_1">Browser-only workers — Tab Groups or extensions already cover this</span></li>
+                        <li class="flex gap-2"><span class="text-slate-400 font-black shrink-0">×</span><span data-i18n="why_notfor_2">Developers &amp; power users who write their own scripts</span></li>
+                        <li class="flex gap-2"><span class="text-slate-400 font-black shrink-0">×</span><span data-i18n="why_notfor_3">Anyone who needs window layout restore — other tools handle that</span></li>
+                        <li class="flex gap-2"><span class="text-slate-400 font-black shrink-0">×</span><span data-i18n="why_notfor_4">Anyone looking for macro automation (clicks, keystrokes) — Aeolo only opens, it doesn't interact</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Comparison table: scripted launch vs snapshot restore -->
+            <div class="mt-10 lg:mt-14">
+                <div class="text-center mb-8">
+                    <p class="text-[10px] font-black uppercase tracking-[0.45em] text-indigo-600 mb-3" data-i18n="why_compare_kicker">Honest comparison</p>
+                    <h3 class="text-2xl sm:text-3xl font-black text-slate-900 uppercase tracking-tight italic" data-i18n="why_compare_title">Aeolo vs Other Solutions</h3>
+                    <p class="mt-4 text-base text-slate-500 max-w-2xl mx-auto leading-relaxed" data-i18n="why_compare_intro">Two different philosophies for the same goal: getting into flow faster. Neither is universally better — they solve different needs.</p>
+                </div>
+                <div class="overflow-x-auto rounded-[2rem] border border-slate-100 shadow-lg shadow-slate-200/40">
+                    <table class="w-full text-base bg-white">
+                        <thead>
+                            <tr class="border-b border-slate-100">
+                                <th class="text-left px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 w-48" data-i18n="why_tbl_criterion">Criterion</th>
+                                <th class="px-5 py-5 text-center text-[10px] font-black uppercase tracking-widest text-indigo-600" data-i18n="why_tbl_aeolo">Aeolo</th>
+                                <th class="px-5 py-5 text-center text-[10px] font-black uppercase tracking-widest text-slate-500" data-i18n="why_tbl_ext">Browser Extensions</th>
+                                <th class="px-5 py-5 text-center text-[10px] font-black uppercase tracking-widest text-slate-500" data-i18n="why_tbl_restore">Workspace Restore<br><span class="normal-case tracking-normal font-medium opacity-70">(Ikuna, PowerToys…)</span></th>
+                                <th class="px-5 py-5 text-center text-[10px] font-black uppercase tracking-widest text-slate-500" data-i18n="why_tbl_macro">Macro Tools<br><span class="normal-case tracking-normal font-medium opacity-70">(AutoHotkey, Raycast…)</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50">
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-slate-700 text-sm" data-i18n="why_tbl_r_urls">Open URLs</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-slate-700 text-sm" data-i18n="why_tbl_r_local">Open local folders &amp; apps</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-slate-700 text-sm" data-i18n="why_tbl_r_install">No installation required</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-slate-700 text-sm" data-i18n="why_tbl_r_code">No coding needed</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-amber-400 font-black text-base">~</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-slate-700 text-sm" data-i18n="why_tbl_r_share">Shareable as a single file</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-slate-700 text-sm" data-i18n="why_tbl_r_privacy">100% private — nothing leaves your machine</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-amber-400 font-black text-base">~</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-slate-700 text-sm" data-i18n="why_tbl_r_layout">Restores window positions</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-amber-400 font-black text-base">~</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-slate-700 text-sm" data-i18n="why_tbl_r_bgram">Zero background RAM</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                                <td class="px-5 py-4 text-center text-slate-300 font-black text-base">✗</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 font-bold text-slate-700 text-sm" data-i18n="why_tbl_r_cost">Free</td>
+                                <td class="px-5 py-4 text-center text-emerald-500 font-black text-base">✓</td>
+                                <td class="px-5 py-4 text-center text-amber-400 font-black text-base">~</td>
+                                <td class="px-5 py-4 text-center text-amber-400 font-black text-base">~</td>
+                                <td class="px-5 py-4 text-center text-amber-400 font-black text-base">~</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-xs text-slate-400 text-center" data-i18n="why_tbl_legend">✓ Yes &nbsp;·&nbsp; ✗ No &nbsp;·&nbsp; ~ Partial or varies</p>
             </div>
         </section>
 
@@ -354,7 +497,7 @@
             <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
                 <p class="text-[10px] font-black uppercase tracking-[0.45em] text-indigo-600 mb-4" data-i18n="usecases_kicker">Global reach · High Efficiency</p>
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-tight italic leading-tight" data-i18n="usecases_title">High-Efficiency Use Cases</h2>
-                <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-medium" data-i18n="usecases_intro">Tailored example stacks for professionals who value extreme efficiency.</p>
+                <p class="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed font-medium" data-i18n-html="usecases_intro">Tailored example stacks for professionals who value extreme efficiency. Use <span class="text-slate-800 font-bold">Load in builder</span> on any card to open the same structure in the Generator—then edit paths and release your script.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -364,11 +507,12 @@
                     </div>
                     <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_traders">Wall Street Day Traders</h3>
                     <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
-                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                    <ul class="text-base text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>TradingView</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Discord</span></li>
-                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">C:\Trading\Logs</code></span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-[13px] sm:text-sm bg-slate-100 px-1.5 py-0.5 rounded font-mono">C:\Trading\Logs</code></span></li>
                     </ul>
+                    <button type="button" class="mt-6 w-full text-center text-[10px] font-black uppercase tracking-widest px-4 py-3.5 rounded-2xl border border-indigo-200 bg-indigo-50 text-indigo-800 hover:bg-indigo-100 hover:border-indigo-300 transition-colors active:scale-[0.99]" data-aeolo-preset="traders" data-i18n="uc_load_builder">Load in builder</button>
                 </article>
                 <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 ring-2 ring-indigo-100/80">
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
@@ -377,11 +521,12 @@
                     <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_hr">HR Onboarding</h3>
                     <p class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 mb-1" data-i18n="uc_hr_badge">B2B scalable</p>
                     <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
-                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                    <ul class="text-base text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Company Intranet</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Slack</span></li>
-                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">Z:\Shared_Drive</code></span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-[13px] sm:text-sm bg-slate-100 px-1.5 py-0.5 rounded font-mono">Z:\Shared_Drive</code></span></li>
                     </ul>
+                    <button type="button" class="mt-6 w-full text-center text-[10px] font-black uppercase tracking-widest px-4 py-3.5 rounded-2xl border border-indigo-200 bg-indigo-50 text-indigo-800 hover:bg-indigo-100 hover:border-indigo-300 transition-colors active:scale-[0.99]" data-aeolo-preset="hr" data-i18n="uc_load_builder">Load in builder</button>
                 </article>
                 <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300">
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
@@ -389,11 +534,12 @@
                     </div>
                     <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_cpa">CPA &amp; Accounting</h3>
                     <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
-                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                    <ul class="text-base text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Web Banking</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>QuickBooks / ERP</span></li>
-                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">C:\Clients</code></span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-[13px] sm:text-sm bg-slate-100 px-1.5 py-0.5 rounded font-mono">C:\Clients</code></span></li>
                     </ul>
+                    <button type="button" class="mt-6 w-full text-center text-[10px] font-black uppercase tracking-widest px-4 py-3.5 rounded-2xl border border-indigo-200 bg-indigo-50 text-indigo-800 hover:bg-indigo-100 hover:border-indigo-300 transition-colors active:scale-[0.99]" data-aeolo-preset="cpa" data-i18n="uc_load_builder">Load in builder</button>
                 </article>
                 <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300">
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
@@ -401,11 +547,12 @@
                     </div>
                     <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_creators">Content Creators</h3>
                     <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
-                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                    <ul class="text-base text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>YouTube Studio</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Premiere Pro</span></li>
-                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">D:\Sound_FX</code></span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-[13px] sm:text-sm bg-slate-100 px-1.5 py-0.5 rounded font-mono">D:\Sound_FX</code></span></li>
                     </ul>
+                    <button type="button" class="mt-6 w-full text-center text-[10px] font-black uppercase tracking-widest px-4 py-3.5 rounded-2xl border border-indigo-200 bg-indigo-50 text-indigo-800 hover:bg-indigo-100 hover:border-indigo-300 transition-colors active:scale-[0.99]" data-aeolo-preset="creators" data-i18n="uc_load_builder">Load in builder</button>
                 </article>
                 <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300">
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
@@ -413,11 +560,12 @@
                     </div>
                     <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_engineers">Software Engineers</h3>
                     <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
-                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
-                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">localhost:3000</code></span></li>
+                    <ul class="text-base text-slate-600 space-y-2 font-medium">
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-[13px] sm:text-sm bg-slate-100 px-1.5 py-0.5 rounded font-mono">localhost:3000</code></span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>VS Code &amp; Docker</span></li>
-                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">~/Projects</code></span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-[13px] sm:text-sm bg-slate-100 px-1.5 py-0.5 rounded font-mono">~/Projects</code></span></li>
                     </ul>
+                    <button type="button" class="mt-6 w-full text-center text-[10px] font-black uppercase tracking-widest px-4 py-3.5 rounded-2xl border border-indigo-200 bg-indigo-50 text-indigo-800 hover:bg-indigo-100 hover:border-indigo-300 transition-colors active:scale-[0.99]" data-aeolo-preset="engineers" data-i18n="uc_load_builder">Load in builder</button>
                 </article>
                 <article class="group bg-white rounded-[2rem] border border-slate-100 p-8 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300">
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
@@ -425,11 +573,12 @@
                     </div>
                     <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_realtors">Real Estate Agents</h3>
                     <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
-                    <ul class="text-sm text-slate-600 space-y-2 font-medium">
+                    <ul class="text-base text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Zillow Admin</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>WhatsApp Desktop</span></li>
-                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">C:\New_Photos</code></span></li>
+                        <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-[13px] sm:text-sm bg-slate-100 px-1.5 py-0.5 rounded font-mono">C:\New_Photos</code></span></li>
                     </ul>
+                    <button type="button" class="mt-6 w-full text-center text-[10px] font-black uppercase tracking-widest px-4 py-3.5 rounded-2xl border border-indigo-200 bg-indigo-50 text-indigo-800 hover:bg-indigo-100 hover:border-indigo-300 transition-colors active:scale-[0.99]" data-aeolo-preset="realtors" data-i18n="uc_load_builder">Load in builder</button>
                 </article>
             </div>
         </section>
@@ -449,10 +598,10 @@
                                     <span class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center mr-3 text-indigo-600">01</span>
                                     <span data-i18n="guide_01_h">How to use Aeolo</span>
                                 </h3>
-                                <ul class="list-none space-y-4 text-slate-600 text-sm leading-relaxed pl-0">
+                                <ul class="list-none space-y-4 text-slate-600 text-base leading-relaxed pl-0">
                                     <li class="flex gap-3 items-start">
                                         <span class="shrink-0 w-4 text-center font-bold text-indigo-400 select-none" aria-hidden="true">•</span>
-                                        <div class="min-w-0 flex-1" data-i18n-html="guide_li1_html">Add URLs, <b class="text-slate-800">folders</b>, <b class="text-slate-800">documents</b> (e.g. <b class="text-slate-800">.xlsx</b> with the full path), <b class="text-slate-800">other routines</b> (another <b class="text-slate-800">.bat</b> / <b class="text-slate-800">.cmd</b> on Windows — it runs in order; on Mac another <b class="text-slate-800">.sh</b> is run with <code class="inline rounded bg-slate-100 px-1 py-0.5 text-slate-700 font-mono text-[10px] align-baseline">bash</code>), or <b class="text-slate-800">.exe / .app</b> shortcuts. Steps are <b class="text-slate-800">numbered</b> (1 = first). <b class="text-slate-800">Drag the grip</b> to reorder.</div>
+                                        <div class="min-w-0 flex-1" data-i18n-html="guide_li1_html">Add URLs, <b class="text-slate-800">folders</b>, <b class="text-slate-800">documents</b> (e.g. <b class="text-slate-800">.xlsx</b> with the full path), <b class="text-slate-800">other routines</b> (another <b class="text-slate-800">.bat</b> / <b class="text-slate-800">.cmd</b> on Windows — it runs in order; on Mac another <b class="text-slate-800">.sh</b> is run with <code class="inline rounded bg-slate-100 px-1 py-0.5 text-slate-700 font-mono text-xs align-baseline">bash</code>), or <b class="text-slate-800">.exe / .app</b> shortcuts. Steps are <b class="text-slate-800">numbered</b> (1 = first). <b class="text-slate-800">Drag the grip</b> to reorder.</div>
                                     </li>
                                     <li class="flex gap-3 items-start">
                                         <span class="shrink-0 w-4 text-center font-bold text-indigo-400 select-none" aria-hidden="true">•</span>
@@ -478,15 +627,15 @@
                                     <span class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center mr-3 text-amber-600">02</span>
                                     <span data-i18n="guide_02_h">Fix Windows Blocking</span>
                                 </h3>
-                                <p class="text-sm leading-relaxed" data-i18n="guide_02_p">Windows might block scripts downloaded from the internet for security. If your script doesn't run:</p>
+                                <p class="text-base leading-relaxed" data-i18n="guide_02_p">Windows might block scripts downloaded from the internet for security. If your script doesn't run:</p>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
                                     <div class="bg-white p-6 rounded-2xl shadow-sm">
                                         <p class="font-bold text-slate-900 mb-2" data-i18n="guide_s1_h">Step 1</p>
-                                        <p class="text-xs text-slate-500" data-i18n-html="guide_s1_p_html">Right-click your .bat file and select <b>Properties</b>.</p>
+                                        <p class="text-sm text-slate-500" data-i18n-html="guide_s1_p_html">Right-click your .bat file and select <b>Properties</b>.</p>
                                     </div>
                                     <div class="bg-white p-6 rounded-2xl shadow-sm">
                                         <p class="font-bold text-slate-900 mb-2" data-i18n="guide_s2_h">Step 2</p>
-                                        <p class="text-xs text-slate-500" data-i18n-html="guide_s2_p_html">In the General tab, check the <b>"Unblock"</b> box at the bottom and click Apply.</p>
+                                        <p class="text-sm text-slate-500" data-i18n-html="guide_s2_p_html">In the General tab, check the <b>"Unblock"</b> box at the bottom and click Apply.</p>
                                     </div>
                                 </div>
                             </section>
@@ -503,11 +652,11 @@
                         <div class="space-y-6">
                             <div>
                                 <p class="font-black uppercase tracking-widest text-[10px] text-indigo-200 mb-2" data-i18n="safety_client_h">100% Client-Side</p>
-                                <p class="text-sm leading-relaxed opacity-90 text-indigo-50" data-i18n-html="safety_client_p_html">Aeolo runs entirely in your browser. Your URLs, paths, and app names <b>never</b> leave your computer. No servers, no tracking, no database.</p>
+                                <p class="text-base leading-relaxed opacity-90 text-indigo-50" data-i18n-html="safety_client_p_html">Aeolo runs entirely in your browser. Your URLs, paths, and app names <b>never</b> leave your computer. No servers, no tracking, no database.</p>
                             </div>
                             <div>
                                 <p class="font-black uppercase tracking-widest text-[10px] text-indigo-200 mb-2" data-i18n="safety_audit_h">Audit the Code</p>
-                                <p class="text-sm leading-relaxed opacity-90 text-indigo-50" data-i18n="safety_audit_p">Transparency is our priority. You can check the complete source code of this application on GitHub to verify its safety.</p>
+                                <p class="text-base leading-relaxed opacity-90 text-indigo-50" data-i18n="safety_audit_p">Transparency is our priority. You can check the complete source code of this application on GitHub to verify its safety.</p>
                                 <a href="https://github.com/chmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-4 text-xs font-black uppercase tracking-widest bg-white/20 px-4 py-2 rounded-xl hover:bg-white/30 transition-all border border-white/20" data-i18n="safety_github_btn">Check GitHub</a>
                             </div>
                         </div>
@@ -515,7 +664,7 @@
 
                     <div class="bg-white rounded-[3rem] shadow-lg p-10 border border-slate-100">
                         <h3 class="text-xs font-black uppercase tracking-[0.4em] text-slate-400 mb-6" data-i18n="macos_box_h">macOS Users</h3>
-                        <p class="text-xs leading-relaxed text-slate-500" data-i18n-html="macos_box_p_html">After downloading the <b>.sh</b> file, you must give it execution permissions. Open Terminal and type:<br><code class="block mt-3 p-3 bg-slate-50 rounded-lg text-indigo-600 font-mono">chmod +x your_script.sh</code></p>
+                        <p class="text-sm leading-relaxed text-slate-500" data-i18n-html="macos_box_p_html">After downloading the <b>.sh</b> file, you must give it execution permissions. Open Terminal and type:<br><code class="block mt-3 p-3 bg-slate-50 rounded-lg text-indigo-600 font-mono text-sm">chmod +x your_script.sh</code></p>
                     </div>
                 </div>
             </div>
