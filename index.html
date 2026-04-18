@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aeolo — generate Windows .bat or macOS .sh scripts to open your URLs, folders, files, other routines (.bat/.sh), and apps in one click. Private, client-side.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7YVK70NE7J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7YVK70NE7J');
+    </script>
     <title>Aeolo - The 1-Click Workspace Launcher</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/tailwind-config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/i18n.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-600 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900">
 
@@ -24,35 +33,37 @@
                     </svg>
                     <div class="flex flex-col -space-y-1 min-w-0">
                         <span class="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase truncate">Aeol<span class="text-indigo-600">o</span></span>
-                        <span class="text-[8px] md:text-[9px] font-black text-slate-400 tracking-[0.2em] md:tracking-[0.3em] uppercase truncate">By Charalampos Matonakis</span>
+                        <span class="text-[8px] md:text-[9px] font-black text-slate-400 tracking-[0.2em] md:tracking-[0.3em] uppercase truncate" data-i18n="nav_byline">By Charalampos Matonakis</span>
                     </div>
                 </div>
                 <div class="flex md:hidden items-center space-x-3 shrink-0">
-                    <a href="https://github.com/chmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-900 transition-colors p-1" title="Source code on GitHub" aria-label="GitHub">
+                    <a href="https://github.com/chmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-900 transition-colors p-1" data-i18n-title="nav_github_title" title="Source code on GitHub" aria-label="GitHub">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     </a>
                     <a href="https://www.paypal.com/donate/?business=88D4CMKP56FM6&amp;no_recurring=0&amp;currency_code=EUR" target="_blank" rel="noopener noreferrer" title="Support on PayPal" class="flex items-center px-4 py-2 bg-amber-50 text-amber-700 rounded-xl border border-amber-100 hover:bg-amber-100 transition-all text-[10px] font-black uppercase tracking-widest">
-                        <span class="mr-1.5 text-base" aria-hidden="true">☕</span> Support
+                        <span class="mr-1.5 text-base" aria-hidden="true">☕</span> <span data-i18n="nav_support">Support</span>
                     </a>
+                    <!-- i18n: re-add .js-lang-toggle next to Support when Greek copy is ready -->
                 </div>
             </div>
 
             <!-- Primary nav: wraps on small screens; centered on md+ -->
             <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 sm:gap-x-4 md:gap-5 lg:gap-6 w-full md:flex-1 md:min-w-0 border-t border-slate-100/90 pt-2 md:border-t-0 md:pt-0">
-                <button type="button" id="view-generator" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-indigo-600 border-b-2 border-indigo-600 pb-1 transition-all whitespace-nowrap">Generator</button>
-                <button type="button" id="view-why" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap">Why Aeolo?</button>
-                <button type="button" id="view-usecases" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap">Use Cases</button>
-                <button type="button" id="view-story" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap">Our Story</button>
-                <button type="button" id="view-guide" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap">Guide &amp; Safety</button>
+                <button type="button" id="view-generator" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-indigo-600 border-b-2 border-indigo-600 pb-1 transition-all whitespace-nowrap" data-i18n="nav_generator">Generator</button>
+                <button type="button" id="view-why" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap" data-i18n="nav_why">Why Aeolo?</button>
+                <button type="button" id="view-usecases" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap" data-i18n="nav_usecases">Use Cases</button>
+                <button type="button" id="view-story" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap" data-i18n="nav_story">Our Story</button>
+                <button type="button" id="view-guide" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 pb-1 transition-all border-b-2 border-transparent whitespace-nowrap" data-i18n="nav_guide">Guide &amp; Safety</button>
             </div>
 
-            <div class="hidden md:flex items-center space-x-6 lg:space-x-8 shrink-0">
-                <a href="https://github.com/chmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-900 transition-colors" title="Source code on GitHub">
+            <div class="hidden md:flex items-center space-x-4 lg:space-x-6 shrink-0">
+                <a href="https://github.com/chmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-900 transition-colors" data-i18n-title="nav_github_title" title="Source code on GitHub">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 </a>
                 <a href="https://www.paypal.com/donate/?business=88D4CMKP56FM6&amp;no_recurring=0&amp;currency_code=EUR" target="_blank" rel="noopener noreferrer" title="Support on PayPal" class="flex items-center px-6 py-2.5 bg-amber-50 text-amber-700 rounded-2xl border border-amber-100 hover:bg-amber-100 transition-all text-xs font-black uppercase tracking-widest group">
-                    <span class="mr-2 group-hover:rotate-12 transition-transform text-lg" aria-hidden="true">☕</span> Support
+                    <span class="mr-2 group-hover:rotate-12 transition-transform text-lg" aria-hidden="true">☕</span> <span data-i18n="nav_support">Support</span>
                 </a>
+                <!-- i18n: re-add .js-lang-toggle next to Support when Greek copy is ready -->
             </div>
         </div>
     </nav>
@@ -62,10 +73,10 @@
         <!-- GENERATOR VIEW -->
         <main id="generator-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
             <div class="mb-12 lg:mb-16 text-center lg:text-left">
-                <h1 class="text-[3.1875rem] lg:text-[5.1rem] font-black text-slate-900 tracking-tight leading-[0.85] max-w-4xl mb-10 italic uppercase">
+                <h1 class="text-[3.1875rem] lg:text-[5.1rem] font-black text-slate-900 tracking-tight leading-[0.85] max-w-4xl mb-10 italic uppercase" data-i18n-html="hero_h1_html">
                     Release your workday <br/><span class="text-indigo-600">in one breath.</span>
                 </h1>
-                <p class="text-xl lg:text-2xl text-slate-600 max-w-2xl leading-relaxed">
+                <p class="text-xl lg:text-2xl text-slate-600 max-w-2xl leading-relaxed" data-i18n-html="hero_sub_html">
                     Automate your workspace startup with <b>immediate</b>, one-click launches. Aeolo builds high-performance scripts to <b>release</b> your tabs, folders, files, extra batch/shell routines, and apps in an instant—<b>private</b> and <b>secure</b> by design: everything runs in your browser, nothing is uploaded, and your routine stays on your machine.
                 </p>
             </div>
@@ -80,24 +91,24 @@
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                             <div class="flex items-center space-x-3">
                                 <div class="w-2 h-6 bg-indigo-600 rounded-full"></div>
-                                <h2 class="text-xs font-black text-slate-900 uppercase tracking-[0.4em]">Engine Configuration</h2>
+                                <h2 class="text-xs font-black text-slate-900 uppercase tracking-[0.4em]" data-i18n="engine_configuration">Engine Configuration</h2>
                             </div>
                             <div class="flex bg-slate-100 p-1.5 rounded-2xl border border-slate-200 shadow-inner">
-                                <button id="os-windows" class="px-8 py-3 text-[10px] font-black rounded-xl transition-all bg-white shadow-sm text-slate-900 uppercase tracking-widest">Windows (.bat)</button>
-                                <button id="os-mac" class="px-8 py-3 text-[10px] font-black rounded-xl transition-all text-slate-400 hover:text-slate-600 uppercase tracking-widest">macOS (.sh)</button>
+                                <button id="os-windows" class="px-8 py-3 text-[10px] font-black rounded-xl transition-all bg-white shadow-sm text-slate-900 uppercase tracking-widest" data-i18n="os_windows">Windows (.bat)</button>
+                                <button id="os-mac" class="px-8 py-3 text-[10px] font-black rounded-xl transition-all text-slate-400 hover:text-slate-600 uppercase tracking-widest" data-i18n="os_mac">macOS (.sh)</button>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4">
                             <div class="md:col-span-5">
-                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Export Filename</label>
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4" data-i18n="label_export_filename">Export Filename</label>
                                 <div class="flex items-center">
                                     <input type="text" id="filename-input" value="morning_routine" class="w-full bg-slate-50 border border-slate-200 border-r-0 rounded-l-2xl px-6 py-5 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-black text-slate-900">
                                     <span id="file-extension-display" class="bg-slate-100 border border-slate-200 border-l-0 rounded-r-2xl px-5 py-5 text-slate-400 font-black text-[10px]">.bat</span>
                                 </div>
                             </div>
                             <div class="md:col-span-4">
-                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Target Browser</label>
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4" data-i18n="label_browser">Target Browser</label>
                                 <div class="relative group">
                                     <select id="browser-select" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold text-slate-900 appearance-none cursor-pointer">
                                         <option value="default">Default</option>
@@ -111,10 +122,10 @@
                                 </div>
                             </div>
                             <div class="md:col-span-3">
-                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Delay</label>
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4" data-i18n="label_delay">Delay</label>
                                 <div class="relative flex items-center">
                                     <input type="number" id="delay-input" min="0" max="10" value="2" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-black text-slate-900">
-                                    <span class="absolute right-5 text-[10px] font-black text-slate-300 uppercase pointer-events-none">SEC</span>
+                                    <span class="absolute right-5 text-[10px] font-black text-slate-300 uppercase pointer-events-none" data-i18n="delay_sec">SEC</span>
                                 </div>
                             </div>
                         </div>
@@ -125,14 +136,14 @@
                         <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between mb-8">
                             <div class="flex items-center space-x-3">
                                 <div class="w-2 h-6 bg-indigo-600 rounded-full"></div>
-                                <h2 class="text-xs font-black text-slate-900 uppercase tracking-[0.4em]">Release Stack</h2>
+                                <h2 class="text-xs font-black text-slate-900 uppercase tracking-[0.4em]" data-i18n="release_stack">Release Stack</h2>
                             </div>
                             <div class="flex flex-wrap items-center gap-3 shrink-0">
                                 <input type="file" id="import-routine-input" accept=".bat,.sh,.json,.aeolo.json,text/plain,application/json" class="sr-only" aria-hidden="true" tabindex="-1">
-                                <button type="button" id="import-routine-btn" class="text-[10px] font-black uppercase tracking-widest px-5 py-3 rounded-2xl border border-indigo-300 bg-indigo-50 text-indigo-800 shadow-sm hover:bg-indigo-100 hover:border-indigo-400 hover:text-indigo-900 active:scale-[0.98] transition-all">
+                                <button type="button" id="import-routine-btn" class="text-[10px] font-black uppercase tracking-widest px-5 py-3 rounded-2xl border border-indigo-300 bg-indigo-50 text-indigo-800 shadow-sm hover:bg-indigo-100 hover:border-indigo-400 hover:text-indigo-900 active:scale-[0.98] transition-all" data-i18n="import_routine">
                                     Import routine
                                 </button>
-                                <button type="button" id="export-json-btn" class="text-[10px] font-black uppercase tracking-widest px-5 py-3 rounded-2xl border border-slate-300 bg-slate-100 text-slate-800 shadow-sm hover:bg-slate-200 hover:border-slate-400 hover:text-slate-900 active:scale-[0.98] transition-all" title="Full backup of stack, delay, browser, and filename — re-import anytime">
+                                <button type="button" id="export-json-btn" class="text-[10px] font-black uppercase tracking-widest px-5 py-3 rounded-2xl border border-slate-300 bg-slate-100 text-slate-800 shadow-sm hover:bg-slate-200 hover:border-slate-400 hover:text-slate-900 active:scale-[0.98] transition-all" data-i18n-title="export_json_title" title="Full backup of stack, delay, browser, and filename — re-import anytime" data-i18n="export_json_btn">
                                     Save JSON backup
                                 </button>
                             </div>
@@ -144,19 +155,19 @@
                         <div class="flex flex-wrap gap-3 pt-8 mt-8 border-t border-slate-50">
                             <button data-add="url" class="border-2 border-slate-100 text-slate-600 hover:text-indigo-600 hover:border-indigo-100 hover:bg-indigo-50/50 font-black py-5 px-10 rounded-[2rem] transition-all flex items-center text-[10px] tracking-widest uppercase group">
                                 <svg class="w-5 h-5 mr-3 text-indigo-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>
-                                Add URL
+                                <span data-i18n="add_url">Add URL</span>
                             </button>
                             <button data-add="folder" class="border-2 border-slate-100 text-slate-600 hover:text-amber-600 hover:border-amber-100 hover:bg-amber-50/50 font-black py-5 px-10 rounded-[2rem] transition-all flex items-center text-[10px] tracking-widest uppercase group">
                                 <svg class="w-5 h-5 mr-3 text-amber-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" /></svg>
-                                Add Folder
+                                <span data-i18n="add_folder">Add Folder</span>
                             </button>
                             <button data-add="file" class="border-2 border-slate-100 text-slate-600 hover:text-sky-700 hover:border-sky-200 hover:bg-sky-50/60 font-black py-5 px-10 rounded-[2rem] transition-all flex items-center text-[10px] tracking-widest uppercase group">
                                 <svg class="w-5 h-5 mr-3 text-sky-500 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
-                                Add File
+                                <span data-i18n="add_file">Add File</span>
                             </button>
                             <button data-add="app" class="border-2 border-slate-100 text-slate-600 hover:text-emerald-600 hover:border-emerald-100 hover:bg-emerald-50/50 font-black py-5 px-10 rounded-[2rem] transition-all flex items-center text-[10px] tracking-widest uppercase group">
                                 <svg class="w-5 h-5 mr-3 text-emerald-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 19.5 3h-15a2.25 2.25 0 0 0-2.25 2.25v9.75" /></svg>
-                                Add App
+                                <span data-i18n="add_app">Add App</span>
                             </button>
                         </div>
                     </div>
@@ -172,7 +183,7 @@
                         <div class="relative z-10 flex items-center justify-between mb-6 border-b border-slate-800 pb-5">
                             <div class="flex items-center space-x-3 text-white">
                                 <div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.6)] animate-pulse"></div>
-                                <h2 class="text-[11px] font-black uppercase tracking-[0.5em] opacity-60 italic">Aeolo Engine</h2>
+                                <h2 class="text-[11px] font-black uppercase tracking-[0.5em] opacity-60 italic" data-i18n="aeolo_engine">Aeolo Engine</h2>
                             </div>
                             <span id="preview-badge" class="px-5 py-2 bg-slate-800 text-indigo-400 font-mono text-[10px] rounded-2xl font-black tracking-widest uppercase">.bat</span>
                         </div>
@@ -188,35 +199,35 @@
                             </button>
                             <button type="button" id="download-btn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-black py-8 rounded-[1.5rem] shadow-xl shadow-indigo-900/40 hover:scale-[1.01] active:scale-100 transition-all flex items-center justify-center text-xl uppercase tracking-[0.2em] group">
                                 <svg class="w-7 h-7 mr-4 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
-                                Release Script
+                                <span data-i18n="release_script">Release Script</span>
                             </button>
                         </div>
                         <p id="copy-feedback" class="sr-only" role="status" aria-live="polite"></p>
 
                         <div id="paste-save-hint" class="relative z-10 mb-6 p-5 rounded-2xl border border-white/10 bg-slate-800/50 text-[10px] text-slate-400 leading-relaxed">
-                            <p class="font-black uppercase tracking-widest text-slate-300 text-[9px] mb-3">Alternative — paste &amp; save</p>
+                            <p class="font-black uppercase tracking-widest text-slate-300 text-[9px] mb-3" data-i18n="paste_alt_title">Alternative — paste &amp; save</p>
                             <ol class="list-decimal list-inside space-y-2 font-medium">
-                                <li>Click <b class="text-slate-200">Copy code</b> — same script as <b class="text-slate-200">Release Script</b>, on the clipboard.</li>
-                                <li>Open a <b class="text-slate-200">plain-text</b> editor — e.g. <b class="text-slate-200">Notepad</b>, <b class="text-slate-200">Notepad++</b>, <b class="text-slate-200">Brackets</b>, <b class="text-slate-200">Visual Studio Code</b>, or <b class="text-slate-200">Sublime Text</b>.</li>
-                                <li>Paste (<kbd class="px-1.5 py-0.5 rounded bg-slate-900 text-slate-300 font-mono text-[9px]">Ctrl+V</kbd> / <kbd class="px-1.5 py-0.5 rounded bg-slate-900 text-slate-300 font-mono text-[9px]">⌘V</kbd> on Mac), then use <b class="text-slate-200">Save As</b>.</li>
-                                <li>Set file type to <b class="text-slate-200">All files (*.*)</b> / “No extension filter”. Name the file like your export (e.g. <span class="text-indigo-300 font-mono">morning_routine</span><span id="paste-ext-hint" class="text-indigo-300 font-mono">.bat</span>). If the editor asks for encoding, choose <b class="text-slate-200">UTF-8</b>.</li>
+                                <li data-i18n-html="paste_li1_html">Click <b class="text-slate-200">Copy code</b> — same script as <b class="text-slate-200">Release Script</b>, on the clipboard.</li>
+                                <li data-i18n-html="paste_li2_html">Open a <b class="text-slate-200">plain-text</b> editor — e.g. <b class="text-slate-200">Notepad</b>, <b class="text-slate-200">Notepad++</b>, <b class="text-slate-200">Brackets</b>, <b class="text-slate-200">Visual Studio Code</b>, or <b class="text-slate-200">Sublime Text</b>.</li>
+                                <li data-i18n-html="paste_li3_html">Paste (<kbd class="px-1.5 py-0.5 rounded bg-slate-900 text-slate-300 font-mono text-[9px]">Ctrl+V</kbd> / <kbd class="px-1.5 py-0.5 rounded bg-slate-900 text-slate-300 font-mono text-[9px]">⌘V</kbd> on Mac), then use <b class="text-slate-200">Save As</b>.</li>
+                                <li data-i18n-html="paste_li4_html">Set file type to <b class="text-slate-200">All files (*.*)</b> / “No extension filter”. Name the file like your export (e.g. <span class="text-indigo-300 font-mono">morning_routine</span><span id="paste-ext-hint" class="text-indigo-300 font-mono">.bat</span>). If the editor asks for encoding, choose <b class="text-slate-200">UTF-8</b>.</li>
                             </ol>
-                            <p id="paste-mac-extra" class="hidden mt-3 text-[9px] text-slate-500 border-t border-white/5 pt-3">On macOS, after saving the <b class="text-slate-300">.sh</b>, run <code class="bg-slate-900 px-1.5 py-0.5 rounded text-indigo-300 font-mono">chmod +x</code> on that file in Terminal before running it.</p>
+                            <p id="paste-mac-extra" class="hidden mt-3 text-[9px] text-slate-500 border-t border-white/5 pt-3" data-i18n-html="paste_mac_extra_html">On macOS, after saving the <b class="text-slate-300">.sh</b>, run <code class="bg-slate-900 px-1.5 py-0.5 rounded text-indigo-300 font-mono">chmod +x</code> on that file in Terminal before running it.</p>
                         </div>
 
                         <div id="win-troubleshoot" class="relative z-10 mt-6 p-6 bg-slate-800/90 rounded-2xl border border-slate-700/60 space-y-4">
                             <div class="flex items-center gap-2 text-amber-300/90">
                                 <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
-                                <span class="text-[10px] font-black uppercase tracking-widest text-slate-200">Windows won’t run the file?</span>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-slate-200" data-i18n="win_ts_title">Windows won’t run the file?</span>
                             </div>
                             <ol class="text-[10px] text-slate-400 leading-relaxed space-y-2 list-decimal list-inside font-medium">
-                                <li>Right-click the downloaded <b class="text-slate-300">.bat</b> → <b class="text-slate-300">Properties</b>.</li>
-                                <li>On <b class="text-slate-300">General</b>, tick <b class="text-slate-300">Unblock</b> at the bottom → <b class="text-slate-300">Apply</b> / <b class="text-slate-300">OK</b>.</li>
+                                <li data-i18n-html="win_ts_li1_html">Right-click the downloaded <b class="text-slate-300">.bat</b> → <b class="text-slate-300">Properties</b>.</li>
+                                <li data-i18n-html="win_ts_li2_html">On <b class="text-slate-300">General</b>, tick <b class="text-slate-300">Unblock</b> at the bottom → <b class="text-slate-300">Apply</b> / <b class="text-slate-300">OK</b>.</li>
                             </ol>
-                            <p class="text-[9px] text-slate-500 font-bold uppercase tracking-wider">More detail: <button type="button" id="preview-open-guide" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">Guide &amp; Safety</button></p>
+                            <p class="text-[9px] text-slate-500 font-bold uppercase tracking-wider"><span data-i18n="win_ts_more">More detail:</span> <button type="button" id="preview-open-guide" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2"><span data-i18n="mini_guide_link">Guide &amp; Safety</span></button></p>
                         </div>
 
-                        <p id="mac-note" class="relative z-10 mt-6 text-[10px] text-slate-500 text-center hidden italic font-medium leading-relaxed">
+                        <p id="mac-note" class="relative z-10 mt-6 text-[10px] text-slate-500 text-center hidden italic font-medium leading-relaxed" data-i18n-html="mac_note_html">
                             To run on macOS, execute <code class="bg-slate-800 px-2 py-0.5 rounded text-indigo-300">chmod +x your_script.sh</code> in Terminal, then run the script.
                         </p>
                     </div>
@@ -230,23 +241,23 @@
                 <div class="h-80 story-gradient flex items-center justify-center relative">
                     <svg class="w-48 h-48 text-indigo-600 opacity-10 absolute -right-10 -top-10 rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" /><path d="M9.6 4.6A2 2 0 1 1 11 8H2" /><path d="M12.6 19.4A2 2 0 1 0 14 16H2" /></svg>
                     <div class="text-center relative z-10 px-6">
-                        <h2 class="text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-widest italic leading-tight">The Story Behind Aeolo</h2>
-                        <p class="text-indigo-600 font-bold mt-4 uppercase tracking-[0.4em] text-base">By Charalampos Matonakis</p>
+                        <h2 class="text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-widest italic leading-tight" data-i18n="story_hero_title">The Story Behind Aeolo</h2>
+                        <p class="text-indigo-600 font-bold mt-4 uppercase tracking-[0.4em] text-base" data-i18n="story_hero_byline">By Charalampos Matonakis</p>
                     </div>
                 </div>
                 <div class="p-12 lg:p-20 space-y-16 text-xl lg:text-2xl leading-relaxed text-slate-600">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                         <div class="space-y-6">
-                            <h3 class="text-sm font-black text-indigo-600 uppercase tracking-[0.4em]">The Professional</h3>
-                            <p class="font-bold text-slate-900 leading-snug">My name is <span class="text-indigo-600">Charalampos Matonakis</span>. I live in Crete, Greece, and I am an Economist.</p>
-                            <p>I specialize in <b>insurance and public pensions</b>. Managing complex data and professional workflows is my daily reality.</p>
-                            <p>I've always had a passion for technology, teaching myself the basics of coding and web development. This curiosity led me to build a <b>successful niche SaaS</b> for the pension industry on my own.</p>
+                            <h3 class="text-sm font-black text-indigo-600 uppercase tracking-[0.4em]" data-i18n="story_pro_h">The Professional</h3>
+                            <p class="font-bold text-slate-900 leading-snug" data-i18n-html="story_pro_p1_html">My name is <span class="text-indigo-600">Charalampos Matonakis</span>. I live in Crete, Greece, and I am an Economist.</p>
+                            <p data-i18n-html="story_pro_p2_html">I specialize in <b>insurance and public pensions</b>. Managing complex data and professional workflows is my daily reality.</p>
+                            <p data-i18n-html="story_pro_p3_html">I've always had a passion for technology, teaching myself the basics of coding and web development. This curiosity led me to build a <b>successful niche SaaS</b> for the pension industry on my own.</p>
                         </div>
                         <div class="space-y-6">
-                            <h3 class="text-sm font-black text-indigo-600 uppercase tracking-[0.4em]">The Spark</h3>
-                            <p>The idea for <b>Aeolo</b> was born out of a repetitive monthly frustration. Every month, I had to prepare invoices for my accountant.</p>
-                            <p>The routine was always the same: opening banking tabs, document folders, and invoicing apps. I was losing 10 minutes just setting up my environment.</p>
-                            <p>I wanted a way to trigger everything with <b>one single click</b>. No searching, no waiting—just immediate readiness.</p>
+                            <h3 class="text-sm font-black text-indigo-600 uppercase tracking-[0.4em]" data-i18n="story_spark_h">The Spark</h3>
+                            <p data-i18n-html="story_spark_p1_html">The idea for <b>Aeolo</b> was born out of a repetitive monthly frustration. Every month, I had to prepare invoices for my accountant.</p>
+                            <p data-i18n-html="story_spark_p2_html">The routine was always the same: opening banking tabs, document folders, and invoicing apps. I was losing 10 minutes just setting up my environment.</p>
+                            <p data-i18n-html="story_spark_p3_html">I wanted a way to trigger everything with <b>one single click</b>. No searching, no waiting—just immediate readiness.</p>
                         </div>
                     </div>
 
@@ -260,14 +271,14 @@
                             </svg>
                         </div>
                         <div class="space-y-6 relative z-10 text-xl lg:text-2xl leading-relaxed">
-                            <h3 class="text-sm font-black uppercase tracking-[0.5em] text-indigo-200">Why the name Aeolo — and Aeolus in mythology</h3>
-                            <p class="text-white font-medium italic">
+                            <h3 class="text-sm font-black uppercase tracking-[0.5em] text-indigo-200" data-i18n="story_myth_h">Why the name Aeolo — and Aeolus in mythology</h3>
+                            <p class="text-white font-medium italic" data-i18n-html="story_myth_p1_html">
                                 The name <b>Aeolo</b> echoes <b>Aeolus</b> (Greek: <span lang="el">Αίολος</span>) — in mythology, the divine <b>keeper of the winds</b>. He had sealed <b>every wind</b> into one leather sack so they could be meted out <b>one at a time</b>, in calm measure, whenever the voyage needed a breath of power.
                             </p>
-                            <p class="text-indigo-100">
+                            <p class="text-indigo-100" data-i18n-html="story_myth_p2_html">
                                 In Homer’s <i>Odyssey</i>, Odysseus’s companions broke that design. Thinking the sack held treasure, they tore it open while he slept—and in one catastrophic instant, <b>the full pack of winds rushed out together</b>: not a single breeze, but <b>all of them at once</b>, a wall of air that ripped the ship from its course and flung the crew back into the open sea. The horror of the scene is precisely that <b>total, simultaneous release</b>—beautiful in theory as “everything at once,” ruinous when it happens <b>by mistake</b>, without the keeper’s intent.
                             </p>
-                            <p class="text-indigo-100 not-italic">
+                            <p class="text-indigo-100 not-italic" data-i18n-html="story_myth_p3_html">
                                 <b>Aeolo</b> does something structurally similar: when you run your script, <b>everything you stacked opens together</b>—tabs, folders, apps—in one sweep, like <b>all the winds leaving the bag at once</b>. The difference is the hinge: <b>not by accident</b>, not while you sleep, not because someone guessed wrong. <i>You</i> choose the moment; the “storm” is <b>on purpose</b>. Same metaphor as the hero line: your workday, <b>in one breath</b>—only when <i>you</i> say the word.
                             </p>
                         </div>
@@ -279,9 +290,9 @@
         <!-- WHY AEOLO VIEW -->
         <section id="why-container" class="hidden max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20">
             <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
-                <p class="text-[10px] font-black uppercase tracking-[0.45em] text-indigo-600 mb-4">Built for the busy professional</p>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-tight italic leading-tight">The Ultimate Bridge</h2>
-                <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-medium">Most productivity tools are stuck inside your browser or require complex installations. Aeolo sits perfectly in the middle.</p>
+                <p class="text-[10px] font-black uppercase tracking-[0.45em] text-indigo-600 mb-4" data-i18n="why_kicker">Built for the busy professional</p>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-tight italic leading-tight" data-i18n="why_title">The Ultimate Bridge</h2>
+                <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-medium" data-i18n="why_intro">Most productivity tools are stuck inside your browser or require complex installations. Aeolo sits perfectly in the middle.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 mb-14 lg:mb-20">
@@ -291,15 +302,15 @@
                             <path d="M14.25 6.08694C14.25 5.73178 14.4361 5.41076 14.6512 5.1282C14.8721 4.8381 15 4.494 15 4.125C15 3.08947 13.9926 2.25 12.75 2.25C11.5074 2.25 10.5 3.08947 10.5 4.125C10.5 4.494 10.6279 4.8381 10.8488 5.1282C11.064 5.41076 11.25 5.73178 11.25 6.08694V6.08694C11.25 6.44822 10.9542 6.73997 10.593 6.72957C9.18939 6.68914 7.80084 6.58845 6.42989 6.43C6.61626 8.04276 6.72269 9.67987 6.74511 11.3373C6.75007 11.7032 6.45293 12 6.08694 12V12C5.73178 12 5.41076 11.814 5.1282 11.5988C4.8381 11.3779 4.494 11.25 4.125 11.25C3.08947 11.25 2.25 12.2574 2.25 13.5C2.25 14.7426 3.08947 15.75 4.125 15.75C4.494 15.75 4.8381 15.6221 5.1282 15.4012C5.41076 15.186 5.73178 15 6.08694 15V15C6.39613 15 6.64157 15.2608 6.6189 15.5691C6.49306 17.2812 6.27742 18.9682 5.97668 20.6256C7.49458 20.8157 9.03451 20.9348 10.5931 20.9797C10.9542 20.9901 11.2501 20.6983 11.2501 20.337V20.337C11.2501 19.9818 11.0641 19.6608 10.8489 19.3782C10.628 19.0881 10.5001 18.744 10.5001 18.375C10.5001 17.3395 11.5075 16.5 12.7501 16.5C13.9928 16.5 15.0001 17.3395 15.0001 18.375C15.0001 18.744 14.8722 19.0881 14.6513 19.3782C14.4362 19.6608 14.2501 19.9818 14.2501 20.337V20.337C14.2501 20.6699 14.5281 20.9357 14.8605 20.9161C16.6992 20.8081 18.5102 20.5965 20.2876 20.2872C20.5571 18.7389 20.7523 17.1652 20.8696 15.5698C20.8923 15.2611 20.6466 15 20.3371 15V15C19.9819 15 19.6609 15.1861 19.3783 15.4013C19.0882 15.6221 18.7441 15.75 18.3751 15.75C17.3396 15.75 16.5001 14.7427 16.5001 13.5C16.5001 12.2574 17.3396 11.25 18.3751 11.25C18.7441 11.25 19.0882 11.378 19.3783 11.5988C19.6609 11.814 19.9819 12 20.3371 12V12C20.7034 12 21.0008 11.703 20.9959 11.3367C20.9713 9.52413 20.8463 7.73572 20.6261 5.97698C18.7403 6.31916 16.816 6.55115 14.8603 6.66605C14.528 6.68557 14.25 6.41979 14.25 6.08694V6.08694Z" />
                         </svg>
                     </div>
-                    <h3 class="text-xs font-black uppercase tracking-[0.35em] text-slate-900 mb-4">Browser Extensions</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Stuck in the browser ecosystem. Cannot open local folders or desktop apps. Consume massive RAM.</p>
+                    <h3 class="text-xs font-black uppercase tracking-[0.35em] text-slate-900 mb-4" data-i18n="why_ext_title">Browser Extensions</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed" data-i18n="why_ext_desc">Stuck in the browser ecosystem. Cannot open local folders or desktop apps. Consume massive RAM.</p>
                 </div>
                 <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-[2rem] border border-indigo-500/50 p-8 lg:p-10 shadow-xl shadow-indigo-900/30 ring-2 ring-indigo-400/30 z-10 md:-translate-y-1">
                     <div class="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center text-white mb-6 backdrop-blur-sm">
                         <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" /><path d="M9.6 4.6A2 2 0 1 1 11 8H2" /><path d="M12.6 19.4A2 2 0 1 0 14 16H2" /></svg>
                     </div>
-                    <h3 class="text-xs font-black uppercase tracking-[0.35em] text-white mb-4">Aeolo Script</h3>
-                    <p class="text-sm text-indigo-100 leading-relaxed font-medium">Opens Web URLs, Local Folders, and Heavy <span class="text-white font-black">.exe</span> Apps simultaneously. Zero background RAM usage.</p>
+                    <h3 class="text-xs font-black uppercase tracking-[0.35em] text-white mb-4" data-i18n="why_aeolo_title">Aeolo Script</h3>
+                    <p class="text-sm text-indigo-100 leading-relaxed font-medium" data-i18n-html="why_aeolo_desc_html">Opens Web URLs, Local Folders, and Heavy <span class="text-white font-black">.exe</span> Apps simultaneously. Zero background RAM usage.</p>
                 </div>
                 <div class="bg-white rounded-[2rem] border border-slate-200 p-8 lg:p-10 shadow-lg shadow-slate-200/40 hover:shadow-xl hover:border-slate-300 transition-all">
                     <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-500 mb-6">
@@ -307,8 +318,8 @@
                             <path d="M8.25 3V4.5M4.5 8.25H3M21 8.25H19.5M4.5 12H3M21 12H19.5M4.5 15.75H3M21 15.75H19.5M8.25 19.5V21M12 3V4.5M12 19.5V21M15.75 3V4.5M15.75 19.5V21M6.75 19.5H17.25C18.4926 19.5 19.5 18.4926 19.5 17.25V6.75C19.5 5.50736 18.4926 4.5 17.25 4.5H6.75C5.50736 4.5 4.5 5.50736 4.5 6.75V17.25C4.5 18.4926 5.50736 19.5 6.75 19.5ZM7.5 7.5H16.5V16.5H7.5V7.5Z" />
                         </svg>
                     </div>
-                    <h3 class="text-xs font-black uppercase tracking-[0.35em] text-slate-900 mb-4">Macro Software</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">High learning curve. Require heavy installation. Often blocked by corporate IT policies.</p>
+                    <h3 class="text-xs font-black uppercase tracking-[0.35em] text-slate-900 mb-4" data-i18n="why_macro_title">Macro Software</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed" data-i18n="why_macro_desc">High learning curve. Require heavy installation. Often blocked by corporate IT policies.</p>
                 </div>
             </div>
 
@@ -316,34 +327,34 @@
                 <div class="rounded-[2rem] border border-emerald-200 bg-emerald-50/60 p-8 lg:p-10">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-2 h-8 bg-emerald-500 rounded-full"></span>
-                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-emerald-800">Zero Installation (IT Friendly)</h3>
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-emerald-800" data-i18n="why_zero_title">Zero Installation (IT Friendly)</h3>
                     </div>
-                    <p class="text-sm text-slate-700 leading-relaxed">No MSI rollout, no admin rights drama. Aeolo is a static page in your browser—you design the script, download a plain <b class="text-slate-900">.bat</b> or <b class="text-slate-900">.sh</b>, and your stack is live. Security teams see transparent text, not a black-box agent.</p>
+                    <p class="text-sm text-slate-700 leading-relaxed" data-i18n-html="why_zero_body_html">No MSI rollout, no admin rights drama. Aeolo is a static page in your browser—you design the script, download a plain <b class="text-slate-900">.bat</b> or <b class="text-slate-900">.sh</b>, and your stack is live. Security teams see transparent text, not a black-box agent.</p>
                 </div>
                 <div class="rounded-[2rem] border border-indigo-200 bg-indigo-50/50 p-8 lg:p-10">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="w-2 h-8 bg-indigo-600 rounded-full"></span>
-                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-indigo-900">Smart Delay Engine</h3>
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-indigo-900" data-i18n="why_delay_title">Smart Delay Engine</h3>
                     </div>
-                    <p class="text-sm text-slate-700 leading-relaxed">Throttle launches between heavy apps so your machine stays responsive. Same professional rhythm every morning—URLs first, then disk-heavy tools, timed to perfection.</p>
+                    <p class="text-sm text-slate-700 leading-relaxed" data-i18n="why_delay_body">Throttle launches between heavy apps so your machine stays responsive. Same professional rhythm every morning—URLs first, then disk-heavy tools, timed to perfection.</p>
                 </div>
             </div>
 
             <div id="why-stat-block" class="relative overflow-hidden rounded-[2.5rem] bg-slate-900 text-center px-8 py-12 lg:py-16 border border-slate-800 shadow-2xl">
                 <div class="absolute inset-0 bg-gradient-to-tr from-indigo-600/40 via-transparent to-emerald-500/20 pointer-events-none"></div>
-                <p class="relative z-10 text-[10px] font-black uppercase tracking-[0.5em] text-indigo-300 mb-3">Efficiency metric</p>
+                <p class="relative z-10 text-[10px] font-black uppercase tracking-[0.5em] text-indigo-300 mb-3" data-i18n="why_stat_label">Efficiency metric</p>
                 <p id="why-hours-stat" class="relative z-10 text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight italic tabular-nums" data-hours-target="20.8">0.0</p>
-                <p class="relative z-10 mt-2 text-lg font-black uppercase tracking-widest text-slate-300">Hours saved annually</p>
-                <p class="relative z-10 mt-6 max-w-xl mx-auto text-xs text-slate-400 leading-relaxed">~25 minutes/week × 50 work weeks = 1,250 minutes ≈ <b class="text-slate-300">20.8 hours</b>—a conservative floor for anyone juggling browsers, folders, and native apps every morning.</p>
+                <p class="relative z-10 mt-2 text-lg font-black uppercase tracking-widest text-slate-300" data-i18n="why_stat_caption">Hours saved annually</p>
+                <p class="relative z-10 mt-6 max-w-xl mx-auto text-xs text-slate-400 leading-relaxed" data-i18n-html="why_stat_note_html">~25 minutes/week × 50 work weeks = 1,250 minutes ≈ <b class="text-slate-300">20.8 hours</b>—a conservative floor for anyone juggling browsers, folders, and native apps every morning.</p>
             </div>
         </section>
 
         <!-- USE CASES VIEW -->
         <section id="usecases-container" class="hidden max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20">
             <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
-                <p class="text-[10px] font-black uppercase tracking-[0.45em] text-indigo-600 mb-4">Global reach · High Efficiency</p>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-tight italic leading-tight">High-Efficiency Use Cases</h2>
-                <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-medium">Tailored example stacks for professionals who value extreme efficiency.</p>
+                <p class="text-[10px] font-black uppercase tracking-[0.45em] text-indigo-600 mb-4" data-i18n="usecases_kicker">Global reach · High Efficiency</p>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 uppercase tracking-tight italic leading-tight" data-i18n="usecases_title">High-Efficiency Use Cases</h2>
+                <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-medium" data-i18n="usecases_intro">Tailored example stacks for professionals who value extreme efficiency.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -351,8 +362,8 @@
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
                     </div>
-                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">Wall Street Day Traders</h3>
-                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_traders">Wall Street Day Traders</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
                     <ul class="text-sm text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>TradingView</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Discord</span></li>
@@ -363,9 +374,9 @@
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.25 14.1499V18.4C20.25 19.4944 19.4631 20.4359 18.3782 20.58C16.2915 20.857 14.1624 21 12 21C9.83757 21 7.70854 20.857 5.62185 20.58C4.5369 20.4359 3.75 19.4944 3.75 18.4V14.1499M20.25 14.1499C20.7219 13.7476 21 13.1389 21 12.4889V8.70569C21 7.62475 20.2321 6.69082 19.1631 6.53086C18.0377 6.36247 16.8995 6.23315 15.75 6.14432M20.25 14.1499C20.0564 14.315 19.8302 14.4453 19.5771 14.5294C17.1953 15.3212 14.6477 15.75 12 15.75C9.35229 15.75 6.80469 15.3212 4.42289 14.5294C4.16984 14.4452 3.94361 14.3149 3.75 14.1499M3.75 14.1499C3.27808 13.7476 3 13.1389 3 12.4889V8.70569C3 7.62475 3.7679 6.69082 4.83694 6.53086C5.96233 6.36247 7.10049 6.23315 8.25 6.14432M15.75 6.14432V5.25C15.75 4.00736 14.7426 3 13.5 3H10.5C9.25736 3 8.25 4.00736 8.25 5.25V6.14432M15.75 6.14432C14.5126 6.0487 13.262 6 12 6C10.738 6 9.48744 6.0487 8.25 6.14432M12 12.75H12.0075V12.7575H12V12.75Z" /></svg>
                     </div>
-                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">HR Onboarding</h3>
-                    <p class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 mb-1">B2B scalable</p>
-                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_hr">HR Onboarding</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 mb-1" data-i18n="uc_hr_badge">B2B scalable</p>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
                     <ul class="text-sm text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Company Intranet</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Slack</span></li>
@@ -376,8 +387,8 @@
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     </div>
-                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">CPA &amp; Accounting</h3>
-                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_cpa">CPA &amp; Accounting</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
                     <ul class="text-sm text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Web Banking</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>QuickBooks / ERP</span></li>
@@ -388,8 +399,8 @@
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" /></svg>
                     </div>
-                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">Content Creators</h3>
-                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_creators">Content Creators</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
                     <ul class="text-sm text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>YouTube Studio</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Premiere Pro</span></li>
@@ -400,8 +411,8 @@
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>
                     </div>
-                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">Software Engineers</h3>
-                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_engineers">Software Engineers</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
                     <ul class="text-sm text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span><code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded font-mono">localhost:3000</code></span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>VS Code &amp; Docker</span></li>
@@ -412,8 +423,8 @@
                     <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.25 21H21.75M3.75 3V21M14.25 3V21M20.25 7.5V21M6.75 6.75H7.5M6.75 9.75H7.5M6.75 12.75H7.5M10.5 6.75H11.25M10.5 9.75H11.25M10.5 12.75H11.25M6.75 21V17.625C6.75 17.0037 7.25368 16.5 7.875 16.5H10.125C10.7463 16.5 11.25 17.0037 11.25 17.625V21M3 3H15M14.25 7.5H21M17.25 11.25H17.2575V11.2575H17.25V11.25ZM17.25 14.25H17.2575V14.2575H17.25V14.25ZM17.25 17.25H17.2575V17.2575H17.25V17.25Z" /></svg>
                     </div>
-                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1">Real Estate Agents</h3>
-                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4">Stack</p>
+                    <h3 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-1" data-i18n="uc_realtors">Real Estate Agents</h3>
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-4" data-i18n="uc_stack">Stack</p>
                     <ul class="text-sm text-slate-600 space-y-2 font-medium">
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>Zillow Admin</span></li>
                         <li class="flex gap-2"><span class="text-indigo-500 shrink-0">→</span><span>WhatsApp Desktop</span></li>
@@ -430,34 +441,34 @@
                 <!-- Main Guide -->
                 <div class="lg:col-span-8 space-y-12">
                     <div class="bg-white rounded-[4rem] shadow-2xl p-12 lg:p-20 border border-slate-100">
-                        <h2 class="text-4xl font-black text-slate-900 uppercase tracking-widest italic mb-12">Guide & Troubleshooting</h2>
+                        <h2 class="text-4xl font-black text-slate-900 uppercase tracking-widest italic mb-12" data-i18n="guide_title">Guide & Troubleshooting</h2>
 
                         <div class="space-y-16">
                             <section class="space-y-6">
                                 <h3 class="flex items-center text-xs font-black text-indigo-600 uppercase tracking-[0.4em]">
                                     <span class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center mr-3 text-indigo-600">01</span>
-                                    How to use Aeolo
+                                    <span data-i18n="guide_01_h">How to use Aeolo</span>
                                 </h3>
                                 <ul class="list-none space-y-4 text-slate-600 text-sm leading-relaxed pl-0">
                                     <li class="flex gap-3 items-start">
                                         <span class="shrink-0 w-4 text-center font-bold text-indigo-400 select-none" aria-hidden="true">•</span>
-                                        <div class="min-w-0 flex-1">Add URLs, <b class="text-slate-800">folders</b>, <b class="text-slate-800">documents</b> (e.g. <b class="text-slate-800">.xlsx</b> with the full path), <b class="text-slate-800">other routines</b> (another <b class="text-slate-800">.bat</b> / <b class="text-slate-800">.cmd</b> on Windows — it runs in order; on Mac another <b class="text-slate-800">.sh</b> is run with <code class="inline rounded bg-slate-100 px-1 py-0.5 text-slate-700 font-mono text-[10px] align-baseline">bash</code>), or <b class="text-slate-800">.exe / .app</b> shortcuts. Steps are <b class="text-slate-800">numbered</b> (1 = first). <b class="text-slate-800">Drag the grip</b> to reorder.</div>
+                                        <div class="min-w-0 flex-1" data-i18n-html="guide_li1_html">Add URLs, <b class="text-slate-800">folders</b>, <b class="text-slate-800">documents</b> (e.g. <b class="text-slate-800">.xlsx</b> with the full path), <b class="text-slate-800">other routines</b> (another <b class="text-slate-800">.bat</b> / <b class="text-slate-800">.cmd</b> on Windows — it runs in order; on Mac another <b class="text-slate-800">.sh</b> is run with <code class="inline rounded bg-slate-100 px-1 py-0.5 text-slate-700 font-mono text-[10px] align-baseline">bash</code>), or <b class="text-slate-800">.exe / .app</b> shortcuts. Steps are <b class="text-slate-800">numbered</b> (1 = first). <b class="text-slate-800">Drag the grip</b> to reorder.</div>
                                     </li>
                                     <li class="flex gap-3 items-start">
                                         <span class="shrink-0 w-4 text-center font-bold text-indigo-400 select-none" aria-hidden="true">•</span>
-                                        <div class="min-w-0 flex-1">Choose your Operating System (Windows or macOS).</div>
+                                        <div class="min-w-0 flex-1" data-i18n="guide_li2">Choose your Operating System (Windows or macOS).</div>
                                     </li>
                                     <li class="flex gap-3 items-start">
                                         <span class="shrink-0 w-4 text-center font-bold text-indigo-400 select-none" aria-hidden="true">•</span>
-                                        <div class="min-w-0 flex-1">Click &quot;Release Script&quot; and save the file to your Desktop.</div>
+                                        <div class="min-w-0 flex-1" data-i18n="guide_li3">Click &quot;Release Script&quot; and save the file to your Desktop.</div>
                                     </li>
                                     <li class="flex gap-3 items-start">
                                         <span class="shrink-0 w-4 text-center font-bold text-indigo-400 select-none" aria-hidden="true">•</span>
-                                        <div class="min-w-0 flex-1">Double-click the file whenever you start your day!</div>
+                                        <div class="min-w-0 flex-1" data-i18n="guide_li4">Double-click the file whenever you start your day!</div>
                                     </li>
                                     <li class="flex gap-3 items-start">
                                         <span class="shrink-0 w-4 text-center font-bold text-indigo-400 select-none" aria-hidden="true">•</span>
-                                        <div class="min-w-0 flex-1">To tweak a routine later, use <b class="text-slate-800">Import routine</b> with your saved <b class="text-slate-800">.bat</b> or <b class="text-slate-800">.sh</b> from Aeolo, or use <b class="text-slate-800">Save JSON backup</b> for a full snapshot you can re-import anytime.</div>
+                                        <div class="min-w-0 flex-1" data-i18n-html="guide_li5_html">To tweak a routine later, use <b class="text-slate-800">Import routine</b> with your saved <b class="text-slate-800">.bat</b> or <b class="text-slate-800">.sh</b> from Aeolo, or use <b class="text-slate-800">Save JSON backup</b> for a full snapshot you can re-import anytime.</div>
                                     </li>
                                 </ul>
                             </section>
@@ -465,17 +476,17 @@
                             <section id="win-fix" class="space-y-6 p-10 bg-slate-50 rounded-[3rem] border border-slate-100">
                                 <h3 class="flex items-center text-xs font-black text-amber-600 uppercase tracking-[0.4em]">
                                     <span class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center mr-3 text-amber-600">02</span>
-                                    Fix Windows Blocking
+                                    <span data-i18n="guide_02_h">Fix Windows Blocking</span>
                                 </h3>
-                                <p class="text-sm leading-relaxed">Windows might block scripts downloaded from the internet for security. If your script doesn't run:</p>
+                                <p class="text-sm leading-relaxed" data-i18n="guide_02_p">Windows might block scripts downloaded from the internet for security. If your script doesn't run:</p>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
                                     <div class="bg-white p-6 rounded-2xl shadow-sm">
-                                        <p class="font-bold text-slate-900 mb-2">Step 1</p>
-                                        <p class="text-xs text-slate-500">Right-click your .bat file and select <b>Properties</b>.</p>
+                                        <p class="font-bold text-slate-900 mb-2" data-i18n="guide_s1_h">Step 1</p>
+                                        <p class="text-xs text-slate-500" data-i18n-html="guide_s1_p_html">Right-click your .bat file and select <b>Properties</b>.</p>
                                     </div>
                                     <div class="bg-white p-6 rounded-2xl shadow-sm">
-                                        <p class="font-bold text-slate-900 mb-2">Step 2</p>
-                                        <p class="text-xs text-slate-500">In the General tab, check the <b>"Unblock"</b> box at the bottom and click Apply.</p>
+                                        <p class="font-bold text-slate-900 mb-2" data-i18n="guide_s2_h">Step 2</p>
+                                        <p class="text-xs text-slate-500" data-i18n-html="guide_s2_p_html">In the General tab, check the <b>"Unblock"</b> box at the bottom and click Apply.</p>
                                     </div>
                                 </div>
                             </section>
@@ -487,24 +498,24 @@
                 <div class="lg:col-span-4 space-y-8">
                     <div class="bg-indigo-600 text-white rounded-[3rem] shadow-xl p-10 space-y-8 relative overflow-hidden">
                         <div class="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
-                        <h3 class="text-xs font-black uppercase tracking-[0.4em] opacity-80">Safety & Privacy</h3>
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] opacity-80" data-i18n="safety_h">Safety & Privacy</h3>
 
                         <div class="space-y-6">
                             <div>
-                                <p class="font-black uppercase tracking-widest text-[10px] text-indigo-200 mb-2">100% Client-Side</p>
-                                <p class="text-sm leading-relaxed opacity-90 text-indigo-50">Aeolo runs entirely in your browser. Your URLs, paths, and app names <b>never</b> leave your computer. No servers, no tracking, no database.</p>
+                                <p class="font-black uppercase tracking-widest text-[10px] text-indigo-200 mb-2" data-i18n="safety_client_h">100% Client-Side</p>
+                                <p class="text-sm leading-relaxed opacity-90 text-indigo-50" data-i18n-html="safety_client_p_html">Aeolo runs entirely in your browser. Your URLs, paths, and app names <b>never</b> leave your computer. No servers, no tracking, no database.</p>
                             </div>
                             <div>
-                                <p class="font-black uppercase tracking-widest text-[10px] text-indigo-200 mb-2">Audit the Code</p>
-                                <p class="text-sm leading-relaxed opacity-90 text-indigo-50">Transparency is our priority. You can check the complete source code of this application on GitHub to verify its safety.</p>
-                                <a href="https://github.com/chmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-4 text-xs font-black uppercase tracking-widest bg-white/20 px-4 py-2 rounded-xl hover:bg-white/30 transition-all border border-white/20">Check GitHub</a>
+                                <p class="font-black uppercase tracking-widest text-[10px] text-indigo-200 mb-2" data-i18n="safety_audit_h">Audit the Code</p>
+                                <p class="text-sm leading-relaxed opacity-90 text-indigo-50" data-i18n="safety_audit_p">Transparency is our priority. You can check the complete source code of this application on GitHub to verify its safety.</p>
+                                <a href="https://github.com/chmatonakis/aeolo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-4 text-xs font-black uppercase tracking-widest bg-white/20 px-4 py-2 rounded-xl hover:bg-white/30 transition-all border border-white/20" data-i18n="safety_github_btn">Check GitHub</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-white rounded-[3rem] shadow-lg p-10 border border-slate-100">
-                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-slate-400 mb-6">macOS Users</h3>
-                        <p class="text-xs leading-relaxed text-slate-500">After downloading the <b>.sh</b> file, you must give it execution permissions. Open Terminal and type:<br><code class="block mt-3 p-3 bg-slate-50 rounded-lg text-indigo-600 font-mono">chmod +x your_script.sh</code></p>
+                        <h3 class="text-xs font-black uppercase tracking-[0.4em] text-slate-400 mb-6" data-i18n="macos_box_h">macOS Users</h3>
+                        <p class="text-xs leading-relaxed text-slate-500" data-i18n-html="macos_box_p_html">After downloading the <b>.sh</b> file, you must give it execution permissions. Open Terminal and type:<br><code class="block mt-3 p-3 bg-slate-50 rounded-lg text-indigo-600 font-mono">chmod +x your_script.sh</code></p>
                     </div>
                 </div>
             </div>
@@ -512,10 +523,10 @@
 
         <!-- Footer -->
         <footer class="mt-24 pt-24 border-t border-slate-200 text-center pb-32 italic">
-            <p class="text-[11px] font-black text-slate-400 uppercase tracking-[0.7em] mb-16">Aeolo.app • Designed in Crete • Built for Professionals</p>
+            <p class="text-[11px] font-black text-slate-400 uppercase tracking-[0.7em] mb-16" data-i18n="footer_tagline">Aeolo.app • Designed in Crete • Built for Professionals</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-12">
                 <a href="https://www.paypal.com/donate/?business=88D4CMKP56FM6&amp;no_recurring=0&amp;currency_code=EUR" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center px-12 py-6 bg-white border border-slate-200 rounded-[2rem] text-[11px] font-black text-slate-700 hover:shadow-2xl transition-all uppercase tracking-[0.3em] hover:-translate-y-1">
-                    <span class="mr-4 group-hover:rotate-12 transition-transform duration-300 text-2xl" aria-hidden="true">☕</span> Support on PayPal
+                    <span class="mr-4 group-hover:rotate-12 transition-transform duration-300 text-2xl" aria-hidden="true">☕</span> <span data-i18n="footer_paypal">Support on PayPal</span>
                 </a>
             </div>
         </footer>

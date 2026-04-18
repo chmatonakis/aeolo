@@ -45,6 +45,17 @@
             logo: document.getElementById('nav-logo')
         };
 
+        function aeT(key, vars) {
+            return window.AeoloI18n && typeof window.AeoloI18n.t === 'function'
+                ? window.AeoloI18n.t(key, vars)
+                : key;
+        }
+
+        if (window.AeoloI18n) {
+            AeoloI18n.captureFromDom();
+            AeoloI18n.bindLangButtons();
+        }
+
         const icons = {
             url: `<svg class="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>`,
             folder: `<svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" /></svg>`,
@@ -140,7 +151,7 @@
         /** Human-readable label under the field (no network — real page titles are blocked by CORS). */
         function subtitleFromValue(value) {
             const v = String(value || '').trim();
-            if (!v) return '—';
+            if (!v) return aeT('emdash');
             if (/^https?:\/\//i.test(v) || /^www\./i.test(v)) {
                 try {
                     const href = /^www\./i.test(v) ? 'https://' + v : v;
@@ -155,13 +166,13 @@
                     const slice = tail.length > max ? tail.slice(0, max - 1) + '…' : tail;
                     return `${host}${slice}`;
                 } catch {
-                    return 'Invalid URL';
+                    return aeT('invalid_url');
                 }
             }
             const norm = v.replace(/[/\\]+$/, '');
             const parts = norm.split(/[/\\]/).filter(Boolean);
             const base = parts.length ? parts[parts.length - 1] : norm;
-            return base || '—';
+            return base || aeT('emdash');
         }
 
         function updateRowSubtitle(row, value) {
@@ -478,29 +489,29 @@
         }
 
         function itemPlaceholder(type) {
-            if (type === 'url') return 'https://...';
+            if (type === 'url') return aeT('ph_url');
             if (type === 'file')
-                return currentOS === 'windows'
-                    ? 'C:\\\\...\\\\Report.xlsx or other.bat'
-                    : '/Users/.../Report.xlsx or other.sh';
-            if (type === 'app') return currentOS === 'windows' ? 'C:\\\\...\\\\App.exe' : '/Applications/App.app';
-            return currentOS === 'windows' ? 'C:\\\\Path\\\\to\\\\folder' : '/Users/Path/to/folder';
+                return currentOS === 'windows' ? aeT('ph_file_win') : aeT('ph_file_mac');
+            if (type === 'app') return currentOS === 'windows' ? aeT('ph_app_win') : aeT('ph_app_mac');
+            return currentOS === 'windows' ? aeT('ph_folder_win') : aeT('ph_folder_mac');
         }
 
         function renderItems() {
             if (items.length === 0) {
                 dom.list.innerHTML =
-                    '<div class="text-center py-24 border-2 border-dashed border-slate-100 rounded-[3rem] text-slate-200 font-black uppercase tracking-[0.7em] text-[10px]">Your stack is empty</div>';
+                    '<div class="text-center py-24 border-2 border-dashed border-slate-100 rounded-[3rem] text-slate-200 font-black uppercase tracking-[0.7em] text-[10px]">' +
+                    escapeHtml(aeT('stack_empty')) +
+                    '</div>';
                 return;
             }
             const gripSvg = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm0 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm0 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm8-12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm0 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm0 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>`;
             dom.list.innerHTML = items
                 .map(
                     (it, idx) => `
-                    <div class="flex items-start gap-2 sm:gap-3 group aeolo-stack-row rounded-[1.75rem] border border-transparent transition-shadow" data-id="${it.id}" aria-label="Step ${idx + 1}">
-                        <span class="shrink-0 w-5 sm:w-6 text-center text-[10px] font-black tabular-nums text-slate-300 select-none pt-5 sm:pt-6" title="Step order">${idx + 1}</span>
+                    <div class="flex items-start gap-2 sm:gap-3 group aeolo-stack-row rounded-[1.75rem] border border-transparent transition-shadow" data-id="${it.id}" aria-label="${escapeAttr(aeT('row_aria', { n: idx + 1 }))}">
+                        <span class="shrink-0 w-5 sm:w-6 text-center text-[10px] font-black tabular-nums text-slate-300 select-none pt-5 sm:pt-6" title="${escapeAttr(aeT('step_order_title'))}">${idx + 1}</span>
                         <div class="aeolo-drag-handle shrink-0 flex items-center justify-center w-10 sm:w-11 h-16 rounded-xl text-slate-300 hover:text-indigo-500 hover:bg-indigo-50/70 cursor-grab active:cursor-grabbing select-none border border-transparent hover:border-indigo-100 transition-colors mt-1 sm:mt-2"
-                            draggable="true" data-drag-handle title="Drag to reorder" aria-label="Drag to reorder">
+                            draggable="true" data-drag-handle title="${escapeAttr(aeT('drag_title'))}" aria-label="${escapeAttr(aeT('drag_aria'))}">
                             ${gripSvg}
                         </div>
                         <div class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 flex items-center justify-center bg-slate-50 rounded-[1.5rem] border border-slate-100 group-hover:border-indigo-100 group-hover:bg-white transition-all shadow-sm mt-1 sm:mt-2">
@@ -658,10 +669,7 @@
                 const text = String(reader.result || '');
                 const data = parseRoutineFromFile(text, file.name);
                 if (!data || !data.items.length) {
-                    showImportFeedback(
-                        'Could not read this file. Use an Aeolo .bat or .sh export, or a JSON backup from “Save JSON backup”.',
-                        true
-                    );
+                    showImportFeedback(aeT('import_err_parse'), true);
                     return;
                 }
                 const base = file.name
@@ -670,16 +678,16 @@
                     .trim();
                 const fname = data.filename || sanitizeFilename(base) || 'imported_routine';
                 applyImportedRoutine({ ...data, filename: fname });
-                showImportFeedback(`Imported ${data.items.length} item(s). Edit the stack and release when ready.`, false);
+                showImportFeedback(aeT('import_success', { count: data.items.length }), false);
             };
-            reader.onerror = () => showImportFeedback('Could not read the file.', true);
+            reader.onerror = () => showImportFeedback(aeT('import_read_fail'), true);
             reader.readAsText(file);
         });
 
         dom.exportJsonBtn.addEventListener('click', () => {
             const active = items.filter((it) => it.value.trim());
             if (!active.length) {
-                showImportFeedback('Add at least one item to save a JSON backup.', true);
+                showImportFeedback(aeT('import_json_need_items'), true);
                 return;
             }
             const payload = {
@@ -699,7 +707,7 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            showImportFeedback('JSON backup downloaded.', false);
+            showImportFeedback(aeT('import_json_ok'), false);
         });
 
         dom.dl.addEventListener('click', () => {
@@ -734,29 +742,42 @@
         let copyResetTimer;
         dom.copyBtn.addEventListener('click', async () => {
             const text = generateCode();
-            const labelDefault = 'Copy code';
+            const labelDefault = aeT('ui_copy_code');
             try {
                 if (navigator.clipboard && window.isSecureContext) {
                     await navigator.clipboard.writeText(text);
                 } else {
                     copyTextFallback(text);
                 }
-                dom.copyLabel.textContent = 'Copied!';
-                dom.copyFeedback.textContent = 'Script copied to clipboard.';
+                dom.copyLabel.textContent = aeT('copy_copied');
+                dom.copyFeedback.textContent = aeT('copy_ok');
                 clearTimeout(copyResetTimer);
                 copyResetTimer = setTimeout(() => {
                     dom.copyLabel.textContent = labelDefault;
                     dom.copyFeedback.textContent = '';
                 }, 2200);
             } catch {
-                dom.copyLabel.textContent = 'Copy failed';
-                dom.copyFeedback.textContent = 'Could not copy; try selecting the preview text manually.';
+                dom.copyLabel.textContent = aeT('copy_failed');
+                dom.copyFeedback.textContent = aeT('copy_failed_detail');
                 clearTimeout(copyResetTimer);
                 copyResetTimer = setTimeout(() => {
                     dom.copyLabel.textContent = labelDefault;
                     dom.copyFeedback.textContent = '';
                 }, 3500);
             }
+        });
+
+        window.addEventListener('aeolo-lang', () => {
+            dom.pasteExtHint = document.getElementById('paste-ext-hint');
+            if (dom.importFeedback) {
+                dom.importFeedback.textContent = '';
+                dom.importFeedback.classList.add('hidden');
+            }
+            if (dom.copyLabel) dom.copyLabel.textContent = aeT('ui_copy_code');
+            if (dom.copyFeedback) dom.copyFeedback.textContent = '';
+            clearTimeout(copyResetTimer);
+            renderItems();
+            refreshScript();
         });
 
         initWhyEfficiencyStat();
